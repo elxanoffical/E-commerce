@@ -12,7 +12,7 @@ const Footer = () => {
     <footer className="flex flex-col">
       <div className="bg-neutral-100 flex items-center justify-center ">
 
-        <div className="container flex items-center justify-between  my-[59px]">
+        <div className="container flex items-center justify-between my-[59px]">
           <div className="flex flex-col gap-6">
             <h3 className="text-[26px] font-semibold">Join Our Newsletter</h3>
             <p className="text-neutral-500">

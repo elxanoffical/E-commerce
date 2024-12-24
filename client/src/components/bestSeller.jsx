@@ -14,7 +14,7 @@ const BestSeller = () => {
       </div>
       <div className="container flex items-center justify-center gap-5  mb-[168px]">
         <Link to="/listingPage">
-          <div className=" px-2 py-4 flex flex-col gap-6 cursor-pointer border">
+          <div className=" px-2 py-4 flex flex-col gap-6 border">
             <img className="bg-neutral-100 rounded" src={sellerImg1} alt="" />
             <div className="flex flex-col gap-3">
               <h4 className="text-[14px] font-medium">
@@ -35,7 +35,7 @@ const BestSeller = () => {
           </div>
         </Link>
 
-        <div className=" px-2 py-4 flex flex-col gap-6 cursor-pointer border">
+        <div className=" px-2 py-4 flex flex-col gap-6 border">
           <img className="bg-neutral-100 rounded" src={sellerImg2} alt="" />
           <div className="flex flex-col gap-3">
             <h4 className="text-[14px] font-medium">Classic Monochrome Tees</h4>
@@ -52,7 +52,7 @@ const BestSeller = () => {
             </div>
           </div>
         </div>
-        <div className=" px-2 py-4 flex flex-col gap-6 cursor-pointer border">
+        <div className=" px-2 py-4 flex flex-col gap-6  border">
           <img className="bg-neutral-100 rounded" src={sellerImg3} alt="" />
           <div className="flex flex-col gap-3">
             <h4 className="text-[14px] font-medium">Classic Monochrome Tees</h4>
@@ -69,7 +69,7 @@ const BestSeller = () => {
             </div>
           </div>
         </div>
-        <div className=" px-2 py-4 flex flex-col gap-6 cursor-pointer border">
+        <div className=" px-2 py-4 flex flex-col gap-6 border">
           <img className="bg-neutral-100 rounded" src={sellerImg4} alt="" />
           <div className="flex flex-col gap-3">
             <h4 className="text-[14px] font-medium">Classic Monochrome Tees</h4>
