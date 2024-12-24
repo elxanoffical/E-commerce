@@ -14,7 +14,7 @@ const BestSeller = () => {
       </div>
       <div className="container flex items-center justify-center gap-5  mb-[168px]">
         <Link to="/listingPage">
-          <div className=" px-2 py-4 flex flex-col gap-6 border">
+          <div className=" px-2 py-4 flex flex-col gap-6 shadow-lg hover:scale-105 transition-all duration-300">
             <img className="bg-neutral-100 rounded" src={sellerImg1} alt="" />
             <div className="flex flex-col gap-3">
               <h4 className="text-[14px] font-medium">
@@ -35,10 +35,10 @@ const BestSeller = () => {
           </div>
         </Link>
 
-        <div className=" px-2 py-4 flex flex-col gap-6 border">
+        <div className=" px-2 py-4 flex flex-col gap-6 shadow-lg hover:scale-105 transition-all duration-300">
           <img className="bg-neutral-100 rounded" src={sellerImg2} alt="" />
           <div className="flex flex-col gap-3">
-            <h4 className="text-[14px] font-medium">Classic Monochrome Tees</h4>
+            <h4 className="text-[14px] font-medium">Monochromatic Wardrobe</h4>
             <div className="flex items-center gap-4">
               <label
                 className="text-xs font-medium border py-1 px-4 rounded-2xl"
@@ -52,10 +52,10 @@ const BestSeller = () => {
             </div>
           </div>
         </div>
-        <div className=" px-2 py-4 flex flex-col gap-6  border">
+        <div className=" px-2 py-4 flex flex-col gap-6 shadow-lg hover:scale-105 transition-all duration-300">
           <img className="bg-neutral-100 rounded" src={sellerImg3} alt="" />
           <div className="flex flex-col gap-3">
-            <h4 className="text-[14px] font-medium">Classic Monochrome Tees</h4>
+            <h4 className="text-[14px] font-medium">Essential Neutrals</h4>
             <div className="flex items-center gap-4">
               <label
                 className="text-xs font-medium border py-1 px-4 rounded-2xl"
@@ -69,10 +69,10 @@ const BestSeller = () => {
             </div>
           </div>
         </div>
-        <div className=" px-2 py-4 flex flex-col gap-6 border">
+        <div className=" px-2 py-4 flex flex-col gap-6 shadow-lg hover:scale-105 transition-all duration-300">
           <img className="bg-neutral-100 rounded" src={sellerImg4} alt="" />
           <div className="flex flex-col gap-3">
-            <h4 className="text-[14px] font-medium">Classic Monochrome Tees</h4>
+            <h4 className="text-[14px] font-medium">UTRAANET Black</h4>
             <div className="flex items-center gap-4">
               <label
                 className="text-xs font-medium border py-1 px-4 rounded-2xl"

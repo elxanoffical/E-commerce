@@ -2,11 +2,11 @@ import React from "react";
 import { useState } from "react";
 
 const FilterSidebar = () => {
-    const [price, setPrice] = useState(200); // Başlanğıc qiymət
+  const [price, setPrice] = useState(200); // Başlanğıc qiymət
 
-    const handleSliderChange = (e) => {
-      setPrice(e.target.value);
-    };
+  const handleSliderChange = (e) => {
+    setPrice(e.target.value);
+  };
   return (
     <div className="flex flex-col border  rounded-lg w-[248px]  py-6 px-[18px] gap-10">
       <div className="flex flex-col">
@@ -23,7 +23,7 @@ const FilterSidebar = () => {
             Trousers
           </p>
         </div>
-        <div className=" gap-2 py-3 px-1 border-b">
+        <div className=" flex items-center gap-2 py-3 px-1 border-b">
           <input className=" border outline-none" type="checkBox" />
           <p className="text-[14px] tracking-wider font-normal text-neutral-600">
             Shoe
@@ -82,11 +82,7 @@ const FilterSidebar = () => {
       </div>
 
       <div className="">
-        <h3
-          className="block text-lg font-medium text-gray-700 mb-4"
-        >
-          Price
-        </h3>
+        <h3 className="block text-lg font-medium text-gray-700 mb-4">Price</h3>
         <div className="relative">
           <input
             id="price-slider"

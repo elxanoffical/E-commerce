@@ -1,6 +1,7 @@
 import {createBrowserRouter} from 'react-router-dom'
 import HomePage from '../pages/home'
 import ListingPage from '../pages/listing'
+import ProductPage from '../pages/product'
 
 export const routes =  createBrowserRouter([
     {
@@ -10,5 +11,9 @@ export const routes =  createBrowserRouter([
     {
         path: '/listingPage',
         element: <ListingPage/>
+    },
+    {
+        path: '/ListingPage/product',
+        element: <ProductPage/>
     }
 ])
