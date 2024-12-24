@@ -23,7 +23,7 @@ const ListingPage = () => {
             <FilterSidebar />
           </div>
 
-          {/* <div className="border border-black">
+          <div className="border border-black">
             <div className="border flex flex-col gap-3">
               <h3 className="text-xs font-medium">Applied Filters:</h3>
               <div className="flex gap-3">
@@ -37,7 +37,7 @@ const ListingPage = () => {
                 </span>
               </div>
             </div>
-          </div> */}
+          </div>
         </div>
       </div>
       <Footer />
