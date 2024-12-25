@@ -9,7 +9,7 @@ const Details = () => {
              <span className='block'>Crafted with meticulous attention to detail and designed for comfort, these versatile black tees are a must- <span className='block'>have addition to your collection.</span></span>
             The classic black color never goes out of style. Whether you're dressing up for a special occasion or keeping <span className='block'>it casual, these black t-shirts are the perfect choice, effortlessly complementing any outfit.</span></p>
         </div>
-        <div className=''>
+        <div>
             <ul className='flex flex-col gap-2 text-neutral-600 font-normal'>
                 <li>Premium Quality</li>
                 <li>Versatile Wardrobe Staple</li>
