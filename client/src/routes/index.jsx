@@ -1,19 +1,31 @@
-import {createBrowserRouter} from 'react-router-dom'
-import HomePage from '../pages/home'
-import ListingPage from '../pages/listing'
-import ProductPage from '../pages/product'
+import { createBrowserRouter } from "react-router-dom";
+import HomePage from "../pages/home";
+import ListingPage from "../pages/listing";
+import ProductPage from "../pages/product";
+import Details from "../components/details";
+import Reviews from "../components/reviews";
 
-export const routes =  createBrowserRouter([
-    {
-        path: '/',
-        element: <HomePage/>
-    },
-    {
-        path: '/listingPage',
-        element: <ListingPage/>
-    },
-    {
-        path: '/ListingPage/product',
-        element: <ProductPage/>
-    }
-])
+export const routes = createBrowserRouter([
+  {
+    path: "/",
+    element: <HomePage />,
+  },
+  {
+    path: "/listingPage",
+    element: <ListingPage />,
+  },
+  {
+    path: "/ListingPage/product",
+    element: <ProductPage />,
+    children: [
+      {
+        path: "details",
+        element: <Details/>,
+      },
+      {
+        path: "reviews",
+        element: <Reviews/>,
+      },
+    ],
+  },
+]);

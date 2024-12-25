@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import ChevronRight from "../assets/icons/global/Chevron Right.svg";
-import { useParams } from "react-router-dom";
+import { Link, NavLink, Outlet, useParams } from "react-router-dom";
 import { products } from "../data/productsListing";
 import sellerImg2 from "../assets/images/bestSellerImg2.svg";
 import share from "../assets/icons/global/Share.svg";
@@ -10,6 +10,8 @@ import star from "../assets/icons/global/star.svg";
 import minus from "../assets/icons/global/Minus.svg";
 import plus from "../assets/icons/global/Add.svg";
 import heart from "../assets/icons/global/Heart.svg";
+import more from "../assets/icons/global/More.svg";
+import emptyStar from "../assets/icons/global/Empty Star.svg";
 
 const ProductPage = () => {
   const { id } = useParams();
@@ -128,7 +130,37 @@ const ProductPage = () => {
           </div>
         </div>
 
-
+        <div className="border container flex gap-8">
+          <div className=" flex flex-col gap-4">
+            <NavLink
+              to="details"
+              className={({ isActive }) =>
+                `flex gap-3 py-2 px-6 rounded-lg w-60 ${
+                  isActive
+                    ? "bg-neutral-100 font-medium text-neutral-900"
+                    : "bg-white font-medium text-neutral-500"
+                }`
+              }
+            >
+              <img src={more} alt="" />
+              Details
+            </NavLink>
+            <NavLink
+              to="reviews"
+              className={({ isActive }) =>
+                `flex gap-3 py-2 px-6 rounded-lg w-60 ${
+                  isActive
+                    ? "bg-neutral-100 font-medium text-neutral-900"
+                    : "bg-white font-medium text-neutral-500"
+                }`
+              }
+            >
+              <img src={emptyStar} alt="" />
+              Reviews
+            </NavLink>
+          </div>
+          <Outlet />
+        </div>
       </div>
       <Footer />
     </>
