@@ -131,7 +131,7 @@ const ProductPage = () => {
         </div>
 
         <div className="border container flex gap-8">
-          <div className=" flex flex-col gap-4">
+          <div className=" flex flex-col gap-4 mt-20">
             <NavLink
               to="details"
               className={({ isActive }) =>

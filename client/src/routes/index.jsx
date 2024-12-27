@@ -18,6 +18,10 @@ export const routes = createBrowserRouter([
     path: "/ListingPage/product",
     element: <ProductPage />,
     children: [
+        {
+          index: true,
+          element: <Details/>,
+        },
       {
         path: "details",
         element: <Details/>,
