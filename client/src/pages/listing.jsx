@@ -18,11 +18,10 @@ import { products } from "../data/productsListing";
 import { useNavigate } from "react-router-dom";
 
 const ListingPage = () => {
-
   const navigate = useNavigate();
 
-  const prdocut = () => {
-    navigate(`/ListingPage/product`)
+  const prdocut = (id) => {
+    navigate(`/product/${id}`);
   };
   return (
     <>
@@ -68,11 +67,10 @@ const ListingPage = () => {
               </div>
             </div>
 
-            <div 
-            className="flex justify-center flex-wrap gap-8">
+            <div className="flex justify-center flex-wrap gap-8">
               {products.map((item, index) => (
                 <div
-                onClick={prdocut}
+                  onClick={()=>prdocut(item.id)}
                   key={index}
                   className="px-2 py-4 flex flex-col gap-6 shadow-lg hover:scale-105 transition-all duration-300 rounded-lg"
                 >
@@ -102,152 +100,6 @@ const ListingPage = () => {
                   </div>
                 </div>
               ))}
-              {/* <div className="px-2 py-4 flex flex-col gap-6 shadow-lg hover:scale-105 transition-all duration-300 ">
-                <img
-                  className="bg-neutral-100 rounded"
-                  src={productimg2}
-                  alt=""
-                />
-                <div className="flex flex-col gap-3">
-                  <h4 className="text-[14px] font-medium">
-                    Sleek and Cozy Black
-                  </h4>
-                  <div className="flex items-center gap-4">
-                    <label
-                      className="text-xs font-medium border py-1 px-4 rounded-2xl"
-                      htmlFor=""
-                    >
-                      IN STOCK
-                    </label>
-                    <span className="text-[14px] font-normal text-neutral-600">
-                      $57.00
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div className="px-2 py-4 flex flex-col gap-6 shadow-lg hover:scale-105 transition-all duration-300 ">
-                <img
-                  className="bg-neutral-100 rounded"
-                  src={productimg3}
-                  alt=""
-                />
-                <div className="flex flex-col gap-3">
-                  <h4 className="text-[14px] font-medium">Raw Black Tees</h4>
-                  <div className="flex items-center gap-4">
-                    <label
-                      className="text-xs font-medium border py-1 px-4 rounded-2xl"
-                      htmlFor=""
-                    >
-                      IN STOCK
-                    </label>
-                    <span className="text-[14px] font-normal text-neutral-600">
-                      $19.00
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div className="px-2 py-4 flex flex-col gap-6 shadow-lg hover:scale-105 transition-all duration-300 ">
-                <img className="bg-neutral-100 rounded" src={img1} alt="" />
-                <div className="flex flex-col gap-3">
-                  <h4 className="text-[14px] font-medium">MOCKUP Black</h4>
-                  <div className="flex items-center gap-4">
-                    <label
-                      className="text-xs font-medium border py-1 px-4 rounded-2xl"
-                      htmlFor=""
-                    >
-                      IN STOCK
-                    </label>
-                    <span className="text-[14px] font-normal text-neutral-600">
-                      $35.00
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div className="px-2 py-4 flex flex-col gap-6 shadow-lg hover:scale-105 transition-all duration-300 ">
-                <img className="bg-neutral-100 rounded" src={img2} alt="" />
-                <div className="flex flex-col gap-3">
-                  <h4 className="text-[14px] font-medium">MOCKUP Black</h4>
-                  <div className="flex items-center gap-4">
-                    <label
-                      className="text-xs font-medium border py-1 px-4 rounded-2xl"
-                      htmlFor=""
-                    >
-                      IN STOCK
-                    </label>
-                    <span className="text-[14px] font-normal text-neutral-600">
-                      $35.00
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div className="px-2 py-4 flex flex-col gap-6 shadow-lg hover:scale-105 transition-all duration-300 ">
-                <img className="bg-neutral-100 rounded" src={img3} alt="" />
-                <div className="flex flex-col gap-3">
-                  <h4 className="text-[14px] font-medium">MOCKUP Black</h4>
-                  <div className="flex items-center gap-4">
-                    <label
-                      className="text-xs font-medium border py-1 px-4 rounded-2xl"
-                      htmlFor=""
-                    >
-                      IN STOCK
-                    </label>
-                    <span className="text-[14px] font-normal text-neutral-600">
-                      $35.00
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div className="px-2 py-4 flex flex-col gap-6 shadow-lg hover:scale-105 transition-all duration-300 ">
-                <img className="bg-neutral-100 rounded" src={img4} alt="" />
-                <div className="flex flex-col gap-3">
-                  <h4 className="text-[14px] font-medium">MOCKUP Black</h4>
-                  <div className="flex items-center gap-4">
-                    <label
-                      className="text-xs font-medium border py-1 px-4 rounded-2xl"
-                      htmlFor=""
-                    >
-                      IN STOCK
-                    </label>
-                    <span className="text-[14px] font-normal text-neutral-600">
-                      $35.00
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div className="px-2 py-4 flex flex-col gap-6 shadow-lg hover:scale-105 transition-all duration-300 ">
-                <img className="bg-neutral-100 rounded" src={img1} alt="" />
-                <div className="flex flex-col gap-3">
-                  <h4 className="text-[14px] font-medium">MOCKUP Black</h4>
-                  <div className="flex items-center gap-4">
-                    <label
-                      className="text-xs font-medium border py-1 px-4 rounded-2xl"
-                      htmlFor=""
-                    >
-                      IN STOCK
-                    </label>
-                    <span className="text-[14px] font-normal text-neutral-600">
-                      $35.00
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div className="px-2 py-4 flex flex-col gap-6 shadow-lg hover:scale-105 transition-all duration-300 ">
-                <img className="bg-neutral-100 rounded" src={img2} alt="" />
-                <div className="flex flex-col gap-3">
-                  <h4 className="text-[14px] font-medium">MOCKUP Black</h4>
-                  <div className="flex items-center gap-4">
-                    <label
-                      className="text-xs font-medium border py-1 px-4 rounded-2xl"
-                      htmlFor=""
-                    >
-                      IN STOCK
-                    </label>
-                    <span className="text-[14px] font-normal text-neutral-600">
-                      $35.00
-                    </span>
-                  </div>
-                </div>
-              </div> */}
             </div>
 
             <div className=" flex items-center justify-center mt-10">

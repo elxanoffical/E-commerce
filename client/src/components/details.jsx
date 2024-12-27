@@ -2,7 +2,7 @@ import React from 'react'
 
 const Details = () => {
   return (
-    <div className='border flex flex-col gap-14'>
+    <div className=' flex flex-col gap-14'>
         <div className='flex flex-col gap-6'>
             <h3 className='font-semibold'>Detail</h3>
             <p className='text-neutral-600 leading-8 text-[14px] font-normal'>Elevate your everyday style with our Men's Black T-Shirts, the ultimate wardrobe essential for modern men.

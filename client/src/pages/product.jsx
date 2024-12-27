@@ -17,7 +17,8 @@ const ProductPage = () => {
   const { id } = useParams();
   console.log("useparams:", id);
 
-  const product = products.find((item) => item.id == Number(id));
+  const product = products.find((item) => item.id === Number(id));
+  console.log("products:", product);
 
   return (
     <>
@@ -33,7 +34,7 @@ const ProductPage = () => {
 
         <div className="container flex gap-[120px] mb-32">
           <div className="w-[534px] bg-neutral-100 flex flex-col gap-20 items-center py-6">
-            <img className="h-[404px]" src={sellerImg2} alt="" />
+            <img className="h-[404px]" src={product.img} alt="" />
             <div className="flex items-center gap-2">
               <button className="bg-gray-400 focus:bg-black w-2 h-2 rounded-full"></button>
               <button className="bg-gray-400 focus:bg-black w-2 h-2 rounded-full"></button>
@@ -44,7 +45,7 @@ const ProductPage = () => {
 
           <div className=" flex flex-col w-[440px] py-2">
             <div className="flex items-center justify-between mb-3">
-              <h2 className="text-2xl font-bold">Raw Black T-Shirt Lineup</h2>
+              <h2 className="text-2xl font-bold">{product.name}</h2>
               <img src={share} alt="" />
             </div>
 
@@ -61,7 +62,16 @@ const ProductPage = () => {
               </span>
             </div>
 
-            <h3 className="text-[22px] font-semibold mb-8">$50.99</h3>
+            <div className="flex gap-4 items-center mb-6">
+              {product?.hasDiscount && (
+                <p className="text-gray-400 text-[14px] line-through tracking-wider">
+                  {product.beforePrice}
+                </p>
+              )}
+              <p className="text-neutral-800 font-medium text-[16px] tracking-wide">
+                {product.price}
+              </p>
+            </div>
 
             <div className="flex flex-col mb-4">
               <span className="text-[13px] text-neutral-500 font-medium tracking-wider">
@@ -130,7 +140,7 @@ const ProductPage = () => {
           </div>
         </div>
 
-        <div className="border container flex gap-8">
+        <div className=" container flex gap-8">
           <div className=" flex flex-col gap-4 mt-20">
             <NavLink
               to="details"

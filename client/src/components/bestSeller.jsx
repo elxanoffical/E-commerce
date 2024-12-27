@@ -34,8 +34,7 @@ const BestSeller = () => {
             </div>
           </div>
         </Link>
-
-        <div className=" px-2 py-4 flex flex-col gap-6 shadow-lg hover:scale-105 transition-all duration-300">
+        <Link to="/listingPage" className=" px-2 py-4 flex flex-col gap-6 shadow-lg hover:scale-105 transition-all duration-300">
           <img className="bg-neutral-100 rounded" src={sellerImg2} alt="" />
           <div className="flex flex-col gap-3">
             <h4 className="text-[14px] font-medium">Monochromatic Wardrobe</h4>
@@ -51,8 +50,8 @@ const BestSeller = () => {
               </span>
             </div>
           </div>
-        </div>
-        <div className=" px-2 py-4 flex flex-col gap-6 shadow-lg hover:scale-105 transition-all duration-300">
+        </Link>
+        <Link to="/listingPage" className=" px-2 py-4 flex flex-col gap-6 shadow-lg hover:scale-105 transition-all duration-300">
           <img className="bg-neutral-100 rounded" src={sellerImg3} alt="" />
           <div className="flex flex-col gap-3">
             <h4 className="text-[14px] font-medium">Essential Neutrals</h4>
@@ -68,8 +67,8 @@ const BestSeller = () => {
               </span>
             </div>
           </div>
-        </div>
-        <div className=" px-2 py-4 flex flex-col gap-6 shadow-lg hover:scale-105 transition-all duration-300">
+        </Link>
+        <Link to="/listingPage" className=" px-2 py-4 flex flex-col gap-6 shadow-lg hover:scale-105 transition-all duration-300">
           <img className="bg-neutral-100 rounded" src={sellerImg4} alt="" />
           <div className="flex flex-col gap-3">
             <h4 className="text-[14px] font-medium">UTRAANET Black</h4>
@@ -85,7 +84,7 @@ const BestSeller = () => {
               </span>
             </div>
           </div>
-        </div>
+        </Link>
       </div>
     </div>
   );

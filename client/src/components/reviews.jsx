@@ -29,7 +29,7 @@ const Reviews = () => {
       </div>
 
       <div className="">
-        <div className="border flex items-start gap-6 py-[39px] px-2">
+        <div className="   flex items-start gap-6 py-[39px] px-2">
           <img src={avatar} alt="" />
           <div className=" flex flex-col gap-4 w-[727px]">
             <div className=" flex flex-col gap-2">
@@ -51,7 +51,7 @@ const Reviews = () => {
             </p>
           </div>
         </div>
-        <div className="border flex items-start gap-6 py-[39px] px-2">
+        <div className=" flex items-start gap-6 py-[39px] px-2">
           <img src={avatar} alt="" />
           <div className=" flex flex-col gap-4 w-[727px]">
             <div className=" flex flex-col gap-2">
@@ -72,7 +72,7 @@ const Reviews = () => {
             </p>
           </div>
         </div>
-        <div className="border flex items-start gap-6 py-[39px] px-2">
+        <div className=" flex items-start gap-6 py-[39px] px-2">
           <img src={avatar} alt="" />
           <div className=" flex flex-col gap-4 w-[727px]">
             <div className=" flex flex-col gap-2">
