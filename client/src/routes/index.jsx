@@ -18,17 +18,17 @@ export const routes = createBrowserRouter([
     path: "/product/:id",
     element: <ProductPage />,
     children: [
-        {
-          index: true,
-          element: <Details/>,
-        },
+      {
+        index: true,
+        element: <Details />,
+      },
       {
         path: "details",
-        element: <Details/>,
+        element: <Details />,
       },
       {
         path: "reviews",
-        element: <Reviews/>,
+        element: <Reviews />,
       },
     ],
   },
