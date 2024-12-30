@@ -372,6 +372,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiFeatureFeature extends Struct.CollectionTypeSchema {
   collectionName: 'features';
   info: {
+    description: '';
     displayName: 'Feature';
     pluralName: 'features';
     singularName: 'feature';
@@ -388,7 +389,7 @@ export interface ApiFeatureFeature extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    img: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
+    icon: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true;

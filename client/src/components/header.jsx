@@ -14,14 +14,14 @@ const Header = () => {
         </span>
       </div>
 
-      <nav className="flex justify-between items-center h-[84px] container  mx-auto">
+      <nav className="flex justify-between items-center h-[84px] container mx-auto">
         <div className="flex items-center justify-between gap-24">
           <div className="flex items-center gap-3">
             <img src={Logomark} alt="" />
             <h1 className="text-xl font-semibold">Ecommerce</h1>
           </div>
 
-          <ul className="flex items-center gap-8">
+          <ul className="lg:flex hidden items-center gap-8">
             <Link to="/" className="text-neutral-500">Home</Link>
             <select className="text-neutral-500" name="" id="">
               <option value="">Categories</option>
@@ -32,7 +32,7 @@ const Header = () => {
         </div>
 
         <div className="flex items-center gap-8">
-          <div className="flex border rounded-md px-4 py-3 space-x-2">
+          <div className="xl:flex hidden lg:px-4 lg:py-3 border rounded-md px-3 py-2 space-x-2">
             <img src={search} alt="" />
             <input
               className="outline-none"
