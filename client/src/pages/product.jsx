@@ -4,7 +4,6 @@ import Footer from "../components/footer";
 import ChevronRight from "../assets/icons/global/Chevron Right.svg";
 import { Link, NavLink, Outlet, useParams } from "react-router-dom";
 import { products } from "../data/productsListing";
-import sellerImg2 from "../assets/images/bestSellerImg2.svg";
 import share from "../assets/icons/global/Share.svg";
 import star from "../assets/icons/global/star.svg";
 import minus from "../assets/icons/global/Minus.svg";
@@ -15,10 +14,8 @@ import emptyStar from "../assets/icons/global/Empty Star.svg";
 
 const ProductPage = () => {
   const { id } = useParams();
-  console.log("useparams:", id);
 
   const product = products.find((item) => item.id === Number(id));
-  console.log("products:", product);
 
   return (
     <>

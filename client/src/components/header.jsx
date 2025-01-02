@@ -22,10 +22,12 @@ const Header = () => {
           </div>
 
           <ul className="lg:flex hidden items-center gap-8">
-            <Link to="/" className="text-neutral-500">Home</Link>
-            <select className="text-neutral-500" name="" id="">
-              <option value="">Categories</option>
-            </select>
+            <Link to="/" className="text-neutral-500">
+              Home
+            </Link>
+            <Link to="/listingPage" className="text-neutral-500">
+            Categories
+            </Link>
             <li className="text-neutral-500">About</li>
             <li className="text-neutral-500">Contact</li>
           </ul>

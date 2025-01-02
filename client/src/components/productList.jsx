@@ -44,7 +44,7 @@ const ProductList = () => {
               >
                 IN STOCK
               </label>
-              <span className="text-[]14px font-normal text-neutral-600">
+              <span className="text-[14px] font-normal text-neutral-600">
                 $57.00
               </span>
             </div>
@@ -61,7 +61,7 @@ const ProductList = () => {
               >
                 IN STOCK
               </label>
-              <span className="text-[]14px font-normal text-neutral-600">
+              <span className="text-[14px] font-normal text-neutral-600">
                 $19.00
               </span>
             </div>
@@ -78,7 +78,7 @@ const ProductList = () => {
               >
                 IN STOCK
               </label>
-              <span className="text-[]14px font-normal text-neutral-600">
+              <span className="text-[14px] font-normal text-neutral-600">
                 $35.00
               </span>
             </div>
