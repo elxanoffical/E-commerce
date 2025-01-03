@@ -4,31 +4,44 @@ import ListingPage from "../pages/listing";
 import ProductPage from "../pages/product";
 import Details from "../components/details";
 import Reviews from "../components/reviews";
+import MainLayout from "../layout/mainLayout";
+import ShoppingCart from "../pages/shoppingCart";
 
 export const routes = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />,
-  },
-  {
-    path: "/listingPage",
-    element: <ListingPage />,
-  },
-  {
-    path: "/product/:id",
-    element: <ProductPage />,
+    element: <MainLayout />,
     children: [
       {
         index: true,
-        element: <Details />,
+        element: <HomePage />,
       },
       {
-        path: "details",
-        element: <Details />,
+        path: "/listingPage",
+        element: <ListingPage />,
       },
       {
-        path: "reviews",
-        element: <Reviews />,
+        path: "/shoppingCart",
+        element: <ShoppingCart />,
+      },
+      {
+        path: "/product/:documentId",
+        element: <ProductPage />,
+        children: [
+          {
+            index: true,
+            element: <Details />,
+          },
+          {
+            path: "details",
+            element: <Details />,
+          },
+          {
+            path: "reviews",
+            element: <Reviews />,
+          },
+         
+        ],
       },
     ],
   },

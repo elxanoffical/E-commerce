@@ -1,9 +1,12 @@
 import React from "react";
-import Header from "../components/header";
-import Footer from "../components/footer";
 import ChevronRight from "../assets/icons/global/Chevron Right.svg";
-import { Link, NavLink, Outlet, useParams } from "react-router-dom";
-import { products } from "../data/productsListing";
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import share from "../assets/icons/global/Share.svg";
 import star from "../assets/icons/global/star.svg";
 import minus from "../assets/icons/global/Minus.svg";
@@ -11,27 +14,42 @@ import plus from "../assets/icons/global/Add.svg";
 import heart from "../assets/icons/global/Heart.svg";
 import more from "../assets/icons/global/More.svg";
 import emptyStar from "../assets/icons/global/Empty Star.svg";
+import ScrollToTop from "../hooks/useScrollToTop";
+import { getData } from "../hooks/useFetch";
 
 const ProductPage = () => {
-  const { id } = useParams();
+  const { documentId } = useParams();
+  const navigate = useNavigate();
 
-  const product = products.find((item) => item.id === Number(id));
+  const { data, error, loading } = getData("products", documentId);
 
+  const handleClick = () => {
+    navigate("/listingPage");
+  };
   return (
     <>
-      <Header />
+      <ScrollToTop />
       <div className="">
         <div className="h-[28px] flex items-center my-4 mb-2 ">
           <div className=" container mx-auto flex gap-1">
-            <span className="font-medium text-neutral-500">Ecommerce </span>
+            <button
+              onClick={handleClick}
+              className="font-medium text-neutral-500"
+            >
+              Ecommerce{" "}
+            </button>
             <img src={ChevronRight} alt="" />
-            <span className="font-medium text-neutral-900">Search</span>
+            <span className="font-medium text-neutral-900">{data?.name}</span>
           </div>
         </div>
 
         <div className="container flex gap-[120px] mb-32">
           <div className="w-[534px] bg-neutral-100 flex flex-col gap-20 items-center py-6">
-            <img className="h-[404px]" src={product.img} alt="" />
+            <img
+              className="h-[404px]"
+              src={`http://localhost:1337${data?.img.url}`}
+              alt=""
+            />
             <div className="flex items-center gap-2">
               <button className="bg-gray-400 focus:bg-black w-2 h-2 rounded-full"></button>
               <button className="bg-gray-400 focus:bg-black w-2 h-2 rounded-full"></button>
@@ -42,8 +60,10 @@ const ProductPage = () => {
 
           <div className=" flex flex-col w-[440px] py-2">
             <div className="flex items-center justify-between mb-3">
-              <h2 className="text-2xl font-bold">{product.name}</h2>
-              <img src={share} alt="" />
+              <h2 className="text-2xl font-bold">{data?.name}</h2>
+              <Link to='/shoppingCart'>
+                <img src={share} alt="" />
+              </Link>
             </div>
 
             <div className="flex items-center gap-2 mb-6">
@@ -60,13 +80,13 @@ const ProductPage = () => {
             </div>
 
             <div className="flex gap-4 items-center mb-6">
-              {product?.hasDiscount && (
+              {data?.beforePrice && (
                 <p className="text-gray-400 text-[14px] line-through tracking-wider">
-                  {product.beforePrice}
+                  ${data?.beforePrice}
                 </p>
               )}
               <p className="text-neutral-800 font-medium text-[16px] tracking-wide">
-                {product.price}
+                ${data?.price}
               </p>
             </div>
 
@@ -169,7 +189,6 @@ const ProductPage = () => {
           <Outlet />
         </div>
       </div>
-      <Footer />
     </>
   );
 };

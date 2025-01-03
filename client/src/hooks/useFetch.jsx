@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export const getData = (path) => {
+export const getData = (path, id = "") => {
   const URL = "http://localhost:1337";
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(id ? null : []);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -12,7 +12,7 @@ export const getData = (path) => {
       setData(null);
       setError(false);
       setLoading(true);
-      const response = await axios.get(`${URL}/api/${path}?populate=*`);
+      const response = await axios.get(`${URL}/api/${path}/${id}?populate=*`);
       const { data, error } = response;
       if (error) {
         setError(true);

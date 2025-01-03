@@ -12,7 +12,7 @@ const BestSeller = () => {
 
   return (
     <>
-    <ScrollToTop/>
+      <ScrollToTop />
       <div className="flex flex-col">
         <div className="flex flex-col items-center gap-2 mb-20">
           <p className="text-xs text-neutral-400">Shop Now</p>

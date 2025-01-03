@@ -6,7 +6,7 @@ const ScrollToTop = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0); // Scroll to top when path changes
-  }, [pathname]);
+  }, []);
 
   return null; // No UI element needed
 };

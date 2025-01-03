@@ -1,37 +1,43 @@
 import React from "react";
-import Header from "../components/header";
-import Footer from "../components/footer";
 import ChevronRight from "../assets/icons/global/Chevron Right.svg";
 import FilterSidebar from "../components/filterSidebar";
 import close from "../assets/icons/global/X.svg";
 import ChevronDown from "../assets/icons/global/Chevron Down.svg";
-import productimg1 from "../assets/images/productimg1.svg";
-import productimg2 from "../assets/images/productimg2.svg";
-import productimg3 from "../assets/images/productimg3.svg";
-import img1 from "../assets/images/bestSellerImg1.svg";
-import img2 from "../assets/images/bestSellerImg2.svg";
-import img3 from "../assets/images/bestSellerImg3.svg";
-import img4 from "../assets/images/bestSellerImg4.svg";
 import more from "../assets/icons/global/More.svg";
 import ChevronLeft from "../assets/icons/global/Chevron Left.svg";
-import { products } from "../data/productsListing";
 import { useNavigate } from "react-router-dom";
+import ScrollToTop from "../hooks/useScrollToTop";
+import { getData } from "../hooks/useFetch";
+
 
 const ListingPage = () => {
   const navigate = useNavigate();
 
-  const prdocut = (id) => {
-    navigate(`/product/${id}`);
+  const prdocut = (documentId) => {
+    navigate(`/product/${documentId}`);
   };
+
+  const { data, error, loading } = getData("products");
+
+
+  const handleClick = () => {
+    navigate('/')
+  };
+
   return (
     <>
-      <Header />
+      <ScrollToTop />
       <div className="flex flex-col mb-24">
         <div className="bg-neutral-100 h-[64px] flex items-center mb-8">
           <div className=" container mx-auto flex gap-1">
-            <span className="font-medium text-neutral-500">Ecommerce </span>
+            <button
+              onClick={handleClick}
+              className="font-medium text-neutral-500"
+            >
+              Ecommerce{" "}
+            </button>
             <img className="text-black" src={ChevronRight} alt="" />
-            <span className="font-medium text-neutral-900">Search</span>
+            <span className="font-medium text-neutral-900">Categories</span>
           </div>
         </div>
 
@@ -68,24 +74,27 @@ const ListingPage = () => {
             </div>
 
             <div className="flex justify-center flex-wrap gap-8">
-              {products.map((item, index) => (
+              {data?.map((item, index) => (
                 <div
-                  onClick={()=>prdocut(item.id)}
+                  onClick={() => prdocut(item.documentId)}
                   key={index}
                   className="px-2 py-4 flex flex-col gap-6 shadow-lg hover:scale-105 transition-all duration-300 rounded-lg"
                 >
-                  <img className="bg-neutral-100 rounded" src={item.img} />
+                  <img
+                    className="bg-neutral-100 rounded"
+                    src={`http://localhost:1337${item.img.url}`}
+                  />
                   <div className="flex flex-col gap-3 mt-4">
                     <h4 className="text-[14px] font-medium">{item.name}</h4>
                     <div className="flex items-center gap-7">
                       <div className="flex gap-4 items-center">
-                        {item?.hasDiscount && (
+                        {item?.beforePrice && (
                           <p className="text-gray-400 text-[14px] line-through tracking-wider">
-                            {item.beforePrice}
+                            ${item.beforePrice}
                           </p>
                         )}
                         <p className="text-neutral-600 text-[16px] tracking-wide">
-                          {item.price}
+                          ${item.price}
                         </p>
                       </div>
                       <div className="flex items-center gap-4">
@@ -118,7 +127,6 @@ const ListingPage = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 };

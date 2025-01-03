@@ -5,8 +5,7 @@ import shieldCehck from "../assets/icons/global/Shield Check.svg";
 
 const Features = () => {
   return (
-      <>
-      </>
+      <></>
   );
 };
 
