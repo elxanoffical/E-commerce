@@ -5,7 +5,7 @@ import ProductPage from "../pages/product";
 import Details from "../components/details";
 import Reviews from "../components/reviews";
 import MainLayout from "../layout/mainLayout";
-import ShoppingCart from "../pages/shoppingCart";
+import Cart from "../components/cart";
 
 export const routes = createBrowserRouter([
   {
@@ -21,8 +21,8 @@ export const routes = createBrowserRouter([
         element: <ListingPage />,
       },
       {
-        path: "/shoppingCart",
-        element: <ShoppingCart />,
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "/product/:documentId",

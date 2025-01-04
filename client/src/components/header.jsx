@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Logomark from "../assets/images/Logomark.svg";
 import cart from "../assets/icons/global/cart.svg";
 import AdminUser from "../assets/icons/global/Admin user.svg";
 import search from "../assets/icons/global/Search.svg";
 import { Link } from "react-router-dom";
+import Cart from "./cart";
 
 const Header = () => {
+  const [isHover, setIsHover] = useState();
+
   return (
     <header className=" flex flex-col">
       <div className="bg-neutral-900 h-10 flex items-center justify-center">
@@ -22,18 +25,28 @@ const Header = () => {
           </div>
 
           <ul className="lg:flex hidden items-center gap-8">
-            <Link to="/" className="text-neutral-500">
+            <Link
+              to="/"
+              className="text-neutral-500 hover:text-neutral-700 transition-all duration-200"
+            >
               Home
             </Link>
-            <Link to="/listingPage" className="text-neutral-500">
-            Categories
+            <Link
+              to="/listingPage"
+              className="text-neutral-500 hover:text-neutral-700 transition-all duration-200"
+            >
+              Categories
             </Link>
-            <li className="text-neutral-500">About</li>
-            <li className="text-neutral-500">Contact</li>
+            <li className="text-neutral-500 hover:text-neutral-700 transition-all duration-200 cursor-pointer">
+              About
+            </li>
+            <li className="text-neutral-500 hover:text-neutral-700 transition-all duration-200 cursor-pointer">
+              Contact
+            </li>
           </ul>
         </div>
 
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-8 ">
           <div className="xl:flex hidden lg:px-4 lg:py-3 border rounded-md px-3 py-2 space-x-2">
             <img src={search} alt="" />
             <input
@@ -42,9 +55,24 @@ const Header = () => {
               placeholder="Search products"
             />
           </div>
-          <div>
-            <img src={cart} alt="" />
+
+          <div
+            className=" relative"
+            onMouseEnter={() => setIsHover(true)}
+            onMouseLeave={() => setIsHover(false)}
+          >
+            <img className=" cursor-pointer" src={cart} alt="" />
+            <div
+              className={`absolute top-full right-0 shadow-lg transition-all duration-300 ease-in-out transform ${
+                isHover
+                  ? "opacity-100 "
+                  : "opacity-0 scale-100 pointer-events-none duration-300"
+              }`}
+            >
+              <Cart />
+            </div>
           </div>
+
           <div>
             <img src={AdminUser} alt="" />
           </div>

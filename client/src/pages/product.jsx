@@ -61,9 +61,9 @@ const ProductPage = () => {
           <div className=" flex flex-col w-[440px] py-2">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-2xl font-bold">{data?.name}</h2>
-              <Link to='/shoppingCart'>
+              <div>
                 <img src={share} alt="" />
-              </Link>
+              </div>
             </div>
 
             <div className="flex items-center gap-2 mb-6">
@@ -115,7 +115,8 @@ const ProductPage = () => {
                 {["S", "M", "L", "XL", "XXL"].map((size, index) => (
                   <button
                     key={size}
-                    className="border w-10 h-10 text-xs font-medium rounded focus:border-black"
+                    className="border w-10 h-10 text-xs font-medium rounded focus:border-black
+                    hover:bg-neutral-100"
                   >
                     {size}
                   </button>
@@ -162,11 +163,12 @@ const ProductPage = () => {
             <NavLink
               to="details"
               className={({ isActive }) =>
-                `flex gap-3 py-2 px-6 rounded-lg w-60 ${
-                  isActive
-                    ? "bg-neutral-100 font-medium text-neutral-900"
-                    : "bg-white font-medium text-neutral-500"
-                }`
+                `flex gap-3 py-2 px-6 rounded-lg w-60
+               ${
+                 isActive
+                   ? "bg-neutral-100 font-medium text-neutral-900"
+                   : "bg-white font-medium text-neutral-500"
+               }`
               }
             >
               <img src={more} alt="" />
