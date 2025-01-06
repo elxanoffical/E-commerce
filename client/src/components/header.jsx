@@ -5,24 +5,24 @@ import AdminUser from "../assets/icons/global/Admin user.svg";
 import search from "../assets/icons/global/Search.svg";
 import { Link } from "react-router-dom";
 import Cart from "./cart";
+import TopAds from "./topAds";
+import menu from "../assets/icons/global/Menu.svg";
 
 const Header = () => {
   const [isHover, setIsHover] = useState();
 
   return (
     <header className=" flex flex-col">
-      <div className="bg-neutral-900 h-10 flex items-center justify-center">
-        <span className="text-white font-light">
-          Get 25% OFF on your first order. Order Now
-        </span>
-      </div>
+      <TopAds 
+      text=" Get 25% OFF on your first order."
+      btnText={"Order Now"} />
 
       <nav className="flex justify-between items-center h-[84px] container mx-auto">
-        <div className="flex items-center justify-between gap-24">
-          <div className="flex items-center gap-3">
+        <div className="flex items-center justify-between gap-10 xl:gap-24">
+          <Link to="/" className="flex items-center gap-3">
             <img src={Logomark} alt="" />
             <h1 className="text-xl font-semibold">Ecommerce</h1>
-          </div>
+          </Link>
 
           <ul className="lg:flex hidden items-center gap-8">
             <Link
@@ -47,10 +47,14 @@ const Header = () => {
         </div>
 
         <div className="flex items-center gap-8 ">
-          <div className="xl:flex hidden lg:px-4 lg:py-3 border rounded-md px-3 py-2 space-x-2">
-            <img src={search} alt="" />
+          <div className="hidden relative overflow-hidden md:block border border-neutral-100 rounded-md py-2">
+            <img
+              src={search}
+              className=" cursor-pointer absolute top=[50%] left-2 w-6 h-6"
+              alt=""
+            />
             <input
-              className="outline-none"
+              className="outline-none text-sm pl-9"
               type="text"
               placeholder="Search products"
             />
@@ -73,9 +77,10 @@ const Header = () => {
             </div>
           </div>
 
-          <div>
+          <Link to="/login">
             <img src={AdminUser} alt="" />
-          </div>
+          </Link>
+          <img src={menu} alt="" />
         </div>
       </nav>
     </header>

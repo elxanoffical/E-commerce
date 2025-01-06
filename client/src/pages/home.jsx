@@ -1,35 +1,54 @@
 import React, { useEffect, useState } from "react";
 import Hero from "../components/hero";
 import BestSeller from "../components/bestSeller";
-import Catogories from "../components/catogories";
 import ProductList from "../components/productList";
 import FeaturesCard from "../components/featuresCard";
 import Loading from "../components/common/loading";
 import Error from "../components/common/error";
 import { getData } from "../hooks/useFetch";
 
-const HomePage = () => {
-  const { data, error, loading } = getData('features');
+import categoryImg from "../assets/images/categoryImage.svg";
+import heroImg from "../assets/images/heroImg.svg";
 
-  if(loading){
-    <Loading/>
+const HomePage = () => {
+  const { data, error, loading } = getData("features");
+
+  if (loading) {
+    <Loading />;
   }
-  if(error){
-    <Error/>
+  if (error) {
+    <Error />;
   }
 
   return (
     <>
-      <Hero />
-      <div className="">
-        <div className=" container h-[266px] mx-auto mt-[91px] mb-[72px] flex items-center justify-center gap-14">
+      <Hero
+        title=" Fresh Arrivals Online"
+        subTitle="Discover Our Newest Collection Today."
+        btnText="View Collection"
+        btnHref=""
+        img={heroImg}
+      />
+      <section className="">
+        <div
+          className=" container py-8 mt-10 mb-[72px] gap-10
+        grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+        >
           {data?.map((item) => {
             return <FeaturesCard key={item.documentId} item={item} />;
           })}
         </div>
-      </div>
+      </section>
+
       <BestSeller />
-      <Catogories />
+      <Hero
+        title="Browse Our Fashion Paradise!"
+        subTitle="Step into a world of style and explore our diverse collection of 
+          clothing categories."
+        btnText="Start Browsing"
+        btnHref=""
+        img={categoryImg}
+      />
       <ProductList />
     </>
   );

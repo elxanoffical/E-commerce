@@ -10,7 +10,7 @@ const MainLayout = () => {
    <ScrollToTop/>
    <Header/>
    <Outlet/>
-   <Footer/>
+   <Footer/>11
    </>
   )
 }
