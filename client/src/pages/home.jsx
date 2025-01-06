@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Hero from "../components/hero";
-import BestSeller from "../components/bestSeller";
 import ProductList from "../components/productList";
 import FeaturesCard from "../components/featuresCard";
 import Loading from "../components/common/loading";
@@ -9,6 +8,8 @@ import { getData } from "../hooks/useFetch";
 
 import categoryImg from "../assets/images/categoryImage.svg";
 import heroImg from "../assets/images/heroImg.svg";
+import PopularProducts from "../components/popularProducts";
+import { products } from "../data/products";
 
 const HomePage = () => {
   const { data, error, loading } = getData("features");
@@ -31,7 +32,7 @@ const HomePage = () => {
       />
       <section className="">
         <div
-          className=" container py-8 mt-10 mb-[72px] gap-10
+          className=" container py-8 mt-10 gap-10
         grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
         >
           {data?.map((item) => {
@@ -40,7 +41,14 @@ const HomePage = () => {
         </div>
       </section>
 
-      <BestSeller />
+      <PopularProducts
+      title="Shop Now"
+      subTitle="Best Selling"
+      textAlign="center"
+      products={products}
+       />
+
+
       <Hero
         title="Browse Our Fashion Paradise!"
         subTitle="Step into a world of style and explore our diverse collection of 
@@ -49,6 +57,7 @@ const HomePage = () => {
         btnHref=""
         img={categoryImg}
       />
+
       <ProductList />
     </>
   );

@@ -1,12 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import HomePage from "../pages/home";
 import ListingPage from "../pages/listing";
-import ProductPage from "../pages/product";
 import Details from "../components/details";
 import Reviews from "../components/reviews";
 import MainLayout from "../layout/mainLayout";
 import Login from "../pages/login";
 import SignUp from "../pages/signUp";
+import ProductDetail from "../pages/productDetail";
 
 export const routes = createBrowserRouter([
   {
@@ -31,7 +31,7 @@ export const routes = createBrowserRouter([
       },
       {
         path: "/product/:documentId",
-        element: <ProductPage />,
+        element: <ProductDetail />,
         children: [
           {
             index: true,

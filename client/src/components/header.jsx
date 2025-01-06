@@ -80,7 +80,8 @@ const Header = () => {
           <Link to="/login">
             <img src={AdminUser} alt="" />
           </Link>
-          <img src={menu} alt="" />
+
+          <img className="sm:hidden" src={menu} alt="" />
         </div>
       </nav>
     </header>

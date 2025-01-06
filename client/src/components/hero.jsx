@@ -1,15 +1,15 @@
 import React from "react";
 import arrowRight from "../assets/icons/global/Arrow Right.svg";
 
-const Hero = ({title,subTitle,btnText,img}) => {
+const Hero = ({ title, subTitle, btnText, img }) => {
   return (
     <div className="h-[440px] bg-neutral-100 ">
       <div className="container sm:pt-6 pt-[20px] flex flex-col sm:flex-row sm:items-center sm:justify-between ">
         <div className="flex flex-col gap-3 items-start py-2">
-          <h3 className="text-neutral-800 text-3xl font-semibold">
-           {title}
+          <h3 className="text-neutral-800 text-2xl sm:text-3xl font-semibold">
+            {title}
           </h3>
-          <p className="text-neutral-600 text-sm tracking-wide">
+          <p className="text-neutral-600 text-sm tracking-wide text-start w-[80%] sm:w-[90%]">
             {subTitle}
           </p>
           <button
@@ -25,9 +25,11 @@ const Hero = ({title,subTitle,btnText,img}) => {
           </button>
         </div>
 
-        <div className=" sm:pt-[36px]">
-          <img className=" w-[50%] mr-9 sm:w-[380px] sm:h-[380px] mx-auto sm:mx-0" src={img} alt="" />
-        </div>
+        <img
+          className="sm:mt-[42px] max-w-[238px] sm:max-w-[100%] sm:max-h-[100%] mx-auto sm:mx-0"
+          src={img}
+          alt=""
+        />
       </div>
     </div>
   );

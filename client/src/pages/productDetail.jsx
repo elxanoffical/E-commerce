@@ -16,8 +16,10 @@ import more from "../assets/icons/global/More.svg";
 import emptyStar from "../assets/icons/global/Empty Star.svg";
 import ScrollToTop from "../hooks/useScrollToTop";
 import { getData } from "../hooks/useFetch";
+import PopularProducts from "../components/popularProducts";
+import { products } from "../data/products";
 
-const ProductPage = () => {
+const ProductDetail = () => {
   const { documentId } = useParams();
   const navigate = useNavigate();
 
@@ -44,26 +46,24 @@ const ProductPage = () => {
         </div>
 
         <div className="container flex gap-[120px] mb-32">
-          <div className="w-[534px] bg-neutral-100 flex flex-col gap-20 items-center py-6">
+          <div className="w-[534px] bg-neutral-100 flex flex-col gap-10 items-center py-6">
             <img
               className="h-[404px]"
               src={`http://localhost:1337${data?.img.url}`}
               alt=""
             />
             <div className="flex items-center gap-2">
-              <button className="bg-gray-400 focus:bg-black w-2 h-2 rounded-full"></button>
-              <button className="bg-gray-400 focus:bg-black w-2 h-2 rounded-full"></button>
-              <button className="bg-gray-400 focus:bg-black w-2 h-2 rounded-full"></button>
-              <button className="bg-gray-400 focus:bg-black w-2 h-2 rounded-full"></button>
+              <button className="bg-gray-400 focus:bg-black w-[10px] h-[10px] rounded-full"></button>
+              <button className="bg-gray-400 focus:bg-black w-[10px] h-[10px] rounded-full"></button>
+              <button className="bg-gray-400 focus:bg-black w-[10px] h-[10px] rounded-full"></button>
+              <button className="bg-gray-400 focus:bg-black w-[10px] h-[10px] rounded-full"></button>
             </div>
           </div>
 
           <div className=" flex flex-col w-[440px] py-2">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-2xl font-bold">{data?.name}</h2>
-              <div>
-                <img src={share} alt="" />
-              </div>
+              <img className=" cursor-pointer" src={share} alt="" />
             </div>
 
             <div className="flex items-center gap-2 mb-6">
@@ -91,9 +91,9 @@ const ProductPage = () => {
             </div>
 
             <div className="flex flex-col mb-4">
-              <span className="text-[13px] text-neutral-500 font-medium tracking-wider">
+              <h3 className="text-[13px] text-neutral-500 font-medium tracking-wider">
                 AVAILABLE COLORS
-              </span>
+              </h3>
               <div className="flex items-center gap-[10px]">
                 <button className=" focus:border border-black w-7 h-7  rounded-full flex items-center justify-center">
                   <span className="w-5 h-5 bg-[#A3BEF8] rounded-full"></span>
@@ -128,14 +128,18 @@ const ProductPage = () => {
               <h3 className="text-[14px] font-medium text-neutral-500 tracking-wide">
                 QUANTITIY
               </h3>
-              <div className="flex items-center justify-center py-[10px] px-4 gap-10 border rounded w-[164px]">
-                <button>
-                  <img src={minus} alt="" />
-                </button>
+              <div className="flex items-center justify-around py-[10px] border-neutral-100 border rounded max-w-[164px] h-[50px]">
+                <img
+                  className="p-2 cursor-pointer hover:bg-neutral-100 transition rounded"
+                  src={minus}
+                  alt=""
+                />
                 <span>1</span>
-                <button>
-                  <img src={plus} alt="" />
-                </button>
+                <img
+                  className="p-2 cursor-pointer hover:bg-neutral-100 transition rounded"
+                  src={plus}
+                  alt=""
+                />
               </div>
             </div>
 
@@ -158,7 +162,7 @@ const ProductPage = () => {
           </div>
         </div>
 
-        <div className=" container flex gap-8">
+        <div className=" container flex gap-8 mb-20">
           <div className=" flex flex-col gap-4 mt-20">
             <NavLink
               to="details"
@@ -190,9 +194,16 @@ const ProductPage = () => {
           </div>
           <Outlet />
         </div>
+
+        <PopularProducts
+          title="Shop Now"
+          subTitle="Best Selling"
+          textAlign="start"
+          products={products}
+        />
       </div>
     </>
   );
 };
 
-export default ProductPage;
+export default ProductDetail;
