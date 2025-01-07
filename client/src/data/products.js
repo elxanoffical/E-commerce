@@ -28,3 +28,4 @@ export const products = [
     price: 43.0,
   },
 ];
+

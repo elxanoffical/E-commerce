@@ -14,9 +14,9 @@ import { products } from "../data/products";
 const HomePage = () => {
   const { data, error, loading } = getData("features");
 
-  if (loading) {
+  if (loading) {  
     <Loading />;
-  }
+  } 
   if (error) {
     <Error />;
   }

@@ -162,12 +162,13 @@ const ProductDetail = () => {
           </div>
         </div>
 
-        <div className=" container flex gap-8 mb-20">
+        <div className=" container flex flex-col md:flex-row gap-8 mb-20">
           <div className=" flex flex-col gap-4 mt-20">
             <NavLink
-              to="details"
+              to=""
+              end
               className={({ isActive }) =>
-                `flex gap-3 py-2 px-6 rounded-lg w-60
+                `flex gap-3 py-2 px-6 rounded-lg lg:w-60
                ${
                  isActive
                    ? "bg-neutral-100 font-medium text-neutral-900"
@@ -181,7 +182,7 @@ const ProductDetail = () => {
             <NavLink
               to="reviews"
               className={({ isActive }) =>
-                `flex gap-3 py-2 px-6 rounded-lg w-60 ${
+                `flex gap-3 py-2 px-6 rounded-lg lg:w-60 ${
                   isActive
                     ? "bg-neutral-100 font-medium text-neutral-900"
                     : "bg-white font-medium text-neutral-500"

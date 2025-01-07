@@ -21,9 +21,9 @@
     "beforePrice": {
       "type": "decimal"
     },
-    "img": {
+    "images": {
       "type": "media",
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "allowedTypes": [
         "images",
@@ -32,8 +32,34 @@
         "audios"
       ]
     },
-    "inStock": {
-      "type": "boolean"
+    "genderFor": {
+      "type": "enumeration",
+      "enum": [
+        "man",
+        "woman"
+      ]
+    },
+    "info": {
+      "type": "json"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "hat",
+        "shirt",
+        "trousers",
+        "shoes",
+        "skirt"
+      ]
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review",
+      "mappedBy": "product"
+    },
+    "detail": {
+      "type": "richtext"
     }
   }
 }
