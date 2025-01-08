@@ -19,7 +19,6 @@ const ListingPage = () => {
   };
 
 
-
   const handleClick = () => {
     navigate('/')
   };
@@ -34,7 +33,7 @@ const ListingPage = () => {
               onClick={handleClick}
               className="font-medium text-neutral-500"
             >
-              Ecommerce{" "}
+              Ecommerce
             </button>
             <img className="text-black" src={ChevronRight} alt="" />
             <span className="font-medium text-neutral-900">Categories</span>
