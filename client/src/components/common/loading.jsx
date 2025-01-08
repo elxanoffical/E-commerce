@@ -24,7 +24,8 @@ const Loading = () => {
         @keyframes l9 {
         to {background-position: calc(50% + 1.6em) 0,calc(50% + 3.2em) .8em}
         }
-    `}</style>
+    `}
+    </style>
       <div className=" h-screen flex items-center justify-center">
         <div className="loader"></div>
       </div>

@@ -2,7 +2,7 @@ import img1 from "../assets/images/bestSellerImg1.svg";
 import img2 from "../assets/images/bestSellerImg2.svg";
 import img3 from "../assets/images/bestSellerImg3.svg";
 import img4 from "../assets/images/bestSellerImg4.svg";
-export const products = [
+export const productList = [
   {
     id: 1,
     img: img1,

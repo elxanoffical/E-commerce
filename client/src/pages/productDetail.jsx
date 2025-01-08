@@ -17,7 +17,7 @@ import emptyStar from "../assets/icons/global/Empty Star.svg";
 import ScrollToTop from "../hooks/useScrollToTop";
 import { getData } from "../hooks/useFetch";
 import PopularProducts from "../components/popularProducts";
-import { products } from "../data/products";
+// import { products } from "../data/products";
 
 const ProductDetail = () => {
   const { documentId } = useParams();

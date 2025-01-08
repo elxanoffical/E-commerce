@@ -20,6 +20,7 @@ export const getData = (path, id = "") => {
       }
       setData(data.data);
     } catch (err) {
+      setError(true)
       console.log(err.message);
     } finally {
       setLoading(false);

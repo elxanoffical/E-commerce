@@ -3,6 +3,7 @@ import ScrollToTop from "../hooks/useScrollToTop";
 import ProductCard from "./productCard";
 
 const PopularProducts = ({ title, subTitle, textAlign, products }) => {
+
   return (
     <>
       <ScrollToTop />
@@ -14,8 +15,8 @@ const PopularProducts = ({ title, subTitle, textAlign, products }) => {
           <h3 className={`text-2xl text-${textAlign} font-bold`}>{subTitle}</h3>
         </div>
         <div className="container grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-[168px]">
-          {products.map((item, index) => (
-            <ProductCard item={item} key={index.id} />
+          {products.slice(0,4).map((item,index) => (
+            <ProductCard item={item} key={index} />
           ))}
         </div>
       </section>

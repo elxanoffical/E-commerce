@@ -8,6 +8,7 @@ import ChevronLeft from "../assets/icons/global/Chevron Left.svg";
 import { useNavigate } from "react-router-dom";
 import ScrollToTop from "../hooks/useScrollToTop";
 import { getData } from "../hooks/useFetch";
+import { products } from "../data/productsListing";
 
 
 const ListingPage = () => {
@@ -17,7 +18,6 @@ const ListingPage = () => {
     navigate(`/product/${documentId}`);
   };
 
-  const { data, error, loading } = getData("products");
 
 
   const handleClick = () => {
@@ -74,7 +74,7 @@ const ListingPage = () => {
             </div>
 
             <div className="flex justify-center flex-wrap gap-8">
-              {data?.map((item, index) => (
+              {products.map((item, index) => (
                 <div
                   onClick={() => prdocut(item.documentId)}
                   key={index}
@@ -82,7 +82,8 @@ const ListingPage = () => {
                 >
                   <img
                     className="bg-neutral-100 rounded"
-                    src={`http://localhost:1337${item.img.url}`}
+                    // src={`http://localhost:1337${item.img.url}`}
+                    src={item.img}
                   />
                   <div className="flex flex-col gap-3 mt-4">
                     <h4 className="text-[14px] font-medium">{item.name}</h4>

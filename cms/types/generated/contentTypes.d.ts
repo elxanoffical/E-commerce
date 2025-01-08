@@ -369,39 +369,6 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiBestSellerBestSeller extends Struct.CollectionTypeSchema {
-  collectionName: 'best_sellers';
-  info: {
-    description: '';
-    displayName: 'BestSeller';
-    pluralName: 'best-sellers';
-    singularName: 'best-seller';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    beforePrice: Schema.Attribute.Decimal;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    img: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    inStock: Schema.Attribute.Boolean;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::best-seller.best-seller'
-    > &
-      Schema.Attribute.Private;
-    name: Schema.Attribute.String;
-    price: Schema.Attribute.Decimal;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
 export interface ApiFeatureFeature extends Struct.CollectionTypeSchema {
   collectionName: 'features';
   info: {
@@ -1043,7 +1010,6 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::best-seller.best-seller': ApiBestSellerBestSeller;
       'api::feature.feature': ApiFeatureFeature;
       'api::product.product': ApiProductProduct;
       'api::review.review': ApiReviewReview;

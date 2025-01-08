@@ -3,7 +3,7 @@ import productimg1 from "../assets/images/productimg1.svg";
 import productimg2 from "../assets/images/productimg2.svg";
 import productimg3 from "../assets/images/productimg3.svg";
 import productimg4 from "../assets/images/productimg4.svg";
-import { products } from "../data/products";
+import { productList } from "../data/products";
 
 const ProductList = () => {
   return (
@@ -15,7 +15,7 @@ const ProductList = () => {
         <button className="text-neutral-500">Latest</button>
       </div>
       <div className="container grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-[168px]">
-        {products.map((item, index) => (
+        {productList.map((item, index) => (
           <div
             onClick={() => prdocut(item.id)}
             key={index}

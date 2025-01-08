@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import Hero from "../components/hero";
 import ProductList from "../components/productList";
 import FeaturesCard from "../components/featuresCard";
@@ -9,14 +8,18 @@ import { getData } from "../hooks/useFetch";
 import categoryImg from "../assets/images/categoryImage.svg";
 import heroImg from "../assets/images/heroImg.svg";
 import PopularProducts from "../components/popularProducts";
-import { products } from "../data/products";
 
 const HomePage = () => {
   const { data, error, loading } = getData("features");
+  console.log(`Loading:`,loading)
+  console.log(data)
+  console.log(`Error:`,error)
 
+ 
   if (loading) {  
     <Loading />;
   } 
+  console.log(loading)
   if (error) {
     <Error />;
   }
@@ -41,12 +44,12 @@ const HomePage = () => {
         </div>
       </section>
 
-      <PopularProducts
+      {/* <PopularProducts
       title="Shop Now"
       subTitle="Best Selling"
       textAlign="center"
       products={products}
-       />
+       /> */}
 
 
       <Hero
