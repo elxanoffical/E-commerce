@@ -1,9 +1,9 @@
 import React from "react";
 import ScrollToTop from "../hooks/useScrollToTop";
 import ProductCard from "./productCard";
+import { Link } from "react-router-dom";
 
-const PopularProducts = ({ title, subTitle, textAlign,products }) => {
-
+const PopularProducts = ({ title, subTitle, textAlign, products }) => {
   return (
     <>
       <ScrollToTop />
@@ -14,11 +14,14 @@ const PopularProducts = ({ title, subTitle, textAlign,products }) => {
           </p>
           <h3 className={`text-2xl text-${textAlign} font-bold`}>{subTitle}</h3>
         </div>
-        <div className="container grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-[168px]">
-          {products?.slice(0,4).map((item,index) => (
+        <Link
+          to="/product/:documentId"
+          className="container grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-[168px]"
+        >
+          {products?.slice(0, 4).map((item, index) => (
             <ProductCard item={item} key={index} />
           ))}
-        </div>
+        </Link>
       </section>
     </>
   );

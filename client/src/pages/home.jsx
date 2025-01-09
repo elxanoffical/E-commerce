@@ -10,19 +10,39 @@ import heroImg from "../assets/images/heroImg.svg";
 import PopularProducts from "../components/popularProducts";
 
 const HomePage = () => {
-  const { data: featuresData, error: featuresError, loading: featuresLoading } = getData("features");
-  
-  const { data: productsData, error: productsError, loading: productsLoading } = getData("products");
+  const HomePageQuery = `{
+  products {
+    documentId
+    name
+    price
+    beforePrice
+    images {
+      url
+    }
+  }
+  features {
+    icon {
+      url
+    }
+    title
+    subTitle
+    documentId
+  }
+}
+`;
 
-  if (featuresLoading || productsLoading) {
+  // const { data: featuresData, error: featuresError, loading: featuresLoading } = getData("features");
+
+  const { data, error, loading } = getData(HomePageQuery);
+
+  if (loading) {
     return <Loading />;
   }
-  if (featuresError || productsError) {
+  if (error) {
     return <Error />;
   }
 
- 
-
+  const { products,features } = data;
 
   return (
     <>
@@ -38,19 +58,18 @@ const HomePage = () => {
           className=" container py-8 mt-10 gap-10
         grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
         >
-          {featuresData?.map((item) => {
+          {features?.map((item) => {
             return <FeaturesCard key={item.documentId} item={item} />;
           })}
         </div>
       </section>
 
       <PopularProducts
-      title="Shop Now"
-      subTitle="Best Selling"
-      textAlign="center"
-      products={productsData}
-       />
-
+        title="Shop Now"
+        subTitle="Best Selling"
+        textAlign="center"
+        products={products}
+      />
 
       <Hero
         title="Browse Our Fashion Paradise!"
@@ -61,7 +80,9 @@ const HomePage = () => {
         img={categoryImg}
       />
 
-      <ProductList />
+      <ProductList 
+      products={products}
+      />
     </>
   );
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ChevronRight from "../assets/icons/global/Chevron Right.svg";
 import {
   Link,
@@ -17,17 +17,40 @@ import emptyStar from "../assets/icons/global/Empty Star.svg";
 import ScrollToTop from "../hooks/useScrollToTop";
 import { getData } from "../hooks/useFetch";
 import PopularProducts from "../components/popularProducts";
-// import { products } from "../data/products";
+import Loading from "../components/common/loading";
+import Error from "../components/common/error";
 
 const ProductDetail = () => {
   const { documentId } = useParams();
+
   const navigate = useNavigate();
-
-  const { data, error, loading } = getData("products", documentId);
-
   const handleClick = () => {
     navigate("/listingPage");
   };
+
+  const productDetailPageQuery = `query($id: ID!){
+      product(documentId: $id) {
+        name
+        price
+        beforePrice
+        documentId
+      }
+    }`;
+
+  const { data, error, loading } = getData(productDetailPageQuery,{id: documentId,});
+
+
+   if (loading) {
+    return <Loading />;
+  }
+  if (error) {
+    return <Error />;
+  }
+
+  const {product} = data
+  
+  console.log(`product data:`,product)
+
   return (
     <>
       <ScrollToTop />
@@ -49,7 +72,7 @@ const ProductDetail = () => {
           <div className="w-[534px] bg-neutral-100 flex flex-col gap-10 items-center py-6">
             <img
               className="h-[404px]"
-              src={`http://localhost:1337${data?.img.url}`}
+              src={`http://localhost:1337${product?.img.url}`}
               alt=""
             />
             <div className="flex items-center gap-2">
@@ -62,7 +85,7 @@ const ProductDetail = () => {
 
           <div className=" flex flex-col w-[440px] py-2">
             <div className="flex items-center justify-between mb-3">
-              <h2 className="text-2xl font-bold">{data?.name}</h2>
+              <h2 className="text-2xl font-bold">{product?.name}</h2>
               <img className=" cursor-pointer" src={share} alt="" />
             </div>
 
@@ -80,13 +103,13 @@ const ProductDetail = () => {
             </div>
 
             <div className="flex gap-4 items-center mb-6">
-              {data?.beforePrice && (
+              {product?.beforePrice && (
                 <p className="text-gray-400 text-[14px] line-through tracking-wider">
-                  ${data?.beforePrice}
+                  ${product?.beforePrice}
                 </p>
               )}
               <p className="text-neutral-800 font-medium text-[16px] tracking-wide">
-                ${data?.price}
+                ${product?.price}
               </p>
             </div>
 
@@ -196,12 +219,12 @@ const ProductDetail = () => {
           <Outlet />
         </div>
 
-        <PopularProducts
+        {/* <PopularProducts
           title="Shop Now"
           subTitle="Best Selling"
           textAlign="start"
           products={products}
-        />
+        /> */}
       </div>
     </>
   );
