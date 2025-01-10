@@ -1,6 +1,9 @@
 import React from "react";
+import { useOutletContext } from "react-router-dom";
 
 const Details = () => {
+  const {detail} = useOutletContext()
+  console.log(detail)
   return (
     <div className=" flex flex-col gap-14">
       <div className="flex flex-col gap-6">

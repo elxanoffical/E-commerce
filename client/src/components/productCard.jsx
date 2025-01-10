@@ -1,11 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ item }) => {
   console.log(item)
 
 
   return (
-    <div className="px-2 py-4 flex flex-col gap-4 shadow-lg hover:scale-105 transition-all duration-300 rounded-lg">
+    <Link to={`/products/${item.documentId}`}
+    className="px-2 py-4 flex flex-col gap-4 shadow-lg hover:scale-105 transition-all duration-300 rounded-lg">
       <img
         className="bg-neutral-100 rounded h-[100%]"
         src={`http://localhost:1337${item?.images[0].url}`}
@@ -24,7 +26,7 @@ const ProductCard = ({ item }) => {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

@@ -30,7 +30,7 @@ export const routes = createBrowserRouter([
         element: <SignUp/>
       },
       {
-        path: "/product/:documentId",
+        path: "/products/:documentId",
         element: <ProductDetail />,
         children: [
           {

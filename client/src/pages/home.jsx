@@ -10,6 +10,7 @@ import heroImg from "../assets/images/heroImg.svg";
 import PopularProducts from "../components/popularProducts";
 
 const HomePage = () => {
+  
   const HomePageQuery = `{
   products {
     documentId

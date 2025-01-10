@@ -4,6 +4,7 @@ import {
   Link,
   NavLink,
   Outlet,
+  ServerRouter,
   useNavigate,
   useParams,
 } from "react-router-dom";
@@ -21,6 +22,11 @@ import Loading from "../components/common/loading";
 import Error from "../components/common/error";
 
 const ProductDetail = () => {
+  const [imgCounter, setImgCounter] = useState(0);
+  const [currentColorIndex, setCurrentColorIndex] = useState(0);
+  const [currentSizesIndex, setCurrentSizesIndex] = useState(0);
+  const [orderCount, setOrderCount] = useState(1);
+
   const { documentId } = useParams();
 
   const navigate = useNavigate();
@@ -30,26 +36,45 @@ const ProductDetail = () => {
 
   const productDetailPageQuery = `query($id: ID!){
       product(documentId: $id) {
-        name
-        price
-        beforePrice
-        documentId
-      }
+    beforePrice
+    category
+    detail
+    genderFor
+    images {
+      url
+    }
+    info
+    name
+    price
+    reviews {
+      author
+      createdAt
+      description
+      documentId
+      stars
+    }
+  }
     }`;
 
-  const { data, error, loading } = getData(productDetailPageQuery,{id: documentId,});
+  const { data, error, loading } = getData(productDetailPageQuery, {
+    id: documentId,
+  });
 
-
-   if (loading) {
+  if (loading) {
     return <Loading />;
   }
   if (error) {
     return <Error />;
   }
 
-  const {product} = data
-  
-  console.log(`product data:`,product)
+  const { product } = data;
+  console.log(product.info);
+
+  let sumOfStar = product.reviews.reduce((acc, review) => {
+    return acc + review.stars;
+  }, 0);
+
+  let reviewsStarsAverage = (sumOfStar / product.reviews.length).toFixed(2);
 
   return (
     <>
@@ -64,7 +89,9 @@ const ProductDetail = () => {
               Ecommerce{" "}
             </button>
             <img src={ChevronRight} alt="" />
-            <span className="font-medium text-neutral-900">{data?.name}</span>
+            <span className="font-medium text-neutral-900">
+              {product?.name}
+            </span>
           </div>
         </div>
 
@@ -72,14 +99,19 @@ const ProductDetail = () => {
           <div className="w-[534px] bg-neutral-100 flex flex-col gap-10 items-center py-6">
             <img
               className="h-[404px]"
-              src={`http://localhost:1337${product?.img.url}`}
+              src={`http://localhost:1337${product?.images[imgCounter].url}`}
               alt=""
             />
             <div className="flex items-center gap-2">
-              <button className="bg-gray-400 focus:bg-black w-[10px] h-[10px] rounded-full"></button>
-              <button className="bg-gray-400 focus:bg-black w-[10px] h-[10px] rounded-full"></button>
-              <button className="bg-gray-400 focus:bg-black w-[10px] h-[10px] rounded-full"></button>
-              <button className="bg-gray-400 focus:bg-black w-[10px] h-[10px] rounded-full"></button>
+              {product.images.map((item, index) => {
+                return (
+                  <button
+                    key={index}
+                    onClick={() => setImgCounter(index)}
+                    className="bg-gray-400 focus:bg-black w-[10px] h-[10px] rounded-full"
+                  ></button>
+                );
+              })}
             </div>
           </div>
 
@@ -95,7 +127,7 @@ const ProductDetail = () => {
               text-xs text-neutral-500 font-medium"
               >
                 <img src={star} alt="" />
-                4.2 — 54 Reviews
+                {reviewsStarsAverage} — {product.reviews.length} Reviews
               </span>
               <span className="border py-[6px] font-medium text-neutral-500 px-4 rounded-2xl text-xs">
                 IN STOCK
@@ -118,15 +150,28 @@ const ProductDetail = () => {
                 AVAILABLE COLORS
               </h3>
               <div className="flex items-center gap-[10px]">
-                <button className=" focus:border border-black w-7 h-7  rounded-full flex items-center justify-center">
-                  <span className="w-5 h-5 bg-[#A3BEF8] rounded-full"></span>
-                </button>
-                <button className="focus:border border-black w-7 h-7  rounded-full flex items-center justify-center">
-                  <span className="w-5 h-5 bg-[#FFD58A] rounded-full"></span>
-                </button>
-                <button className="focus:border border-black w-7 h-7  rounded-full flex items-center justify-center">
-                  <span className="w-5 h-5 bg-[#83B18B] rounded-full"></span>
-                </button>
+                {product.info.map((item, index) => {
+                  return (
+                    <button
+                      onClick={() => {
+                        setOrderCount(0);
+                        setCurrentSizesIndex(0);
+                        setCurrentColorIndex(index);
+                      }}
+                      key={index}
+                      className={`border w-7 h-7 ${
+                        currentColorIndex == index
+                          ? "border-neutral-900"
+                          : "border-neutral-200"
+                      }  rounded-full flex items-center justify-center
+                      `}
+                    >
+                      <span
+                        className={`w-5 h-5 bg-[#${item.color}] rounded-full`}
+                      ></span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
@@ -135,13 +180,26 @@ const ProductDetail = () => {
                 SELECT SIZE
               </h3>
               <div className="flex items-center gap-2">
-                {["S", "M", "L", "XL", "XXL"].map((size, index) => (
+                {product.info[currentColorIndex].sizes.map((item, index) => (
                   <button
-                    key={size}
-                    className="border w-10 h-10 text-xs font-medium rounded focus:border-black
-                    hover:bg-neutral-100"
+                    onClick={() => {
+                      if (item.count > 0) {
+                        setOrderCount(0);
+                        setCurrentSizesIndex(index);
+                      }
+                    }}
+                    key={index}
+                    className={`relative border w-10 h-10 text-xs font-medium rounded ${
+                      currentSizesIndex == index
+                        ? "border-neutral-900"
+                        : "border-neutral-200"
+                    } ${
+                      item.count === 0
+                        ? "bg-neutral-100 cursor-not-allowed"
+                        : ""
+                    }`}
                   >
-                    {size}
+                    {item.name}
                   </button>
                 ))}
               </div>
@@ -155,13 +213,25 @@ const ProductDetail = () => {
                 <img
                   className="p-2 cursor-pointer hover:bg-neutral-100 transition rounded"
                   src={minus}
-                  alt=""
+                  onClick={() => {
+                    if (orderCount - 1 >= 1) {
+                      setOrderCount(orderCount - 1);
+                    }
+                  }}
                 />
-                <span>1</span>
+                <span>{orderCount}</span>
                 <img
                   className="p-2 cursor-pointer hover:bg-neutral-100 transition rounded"
                   src={plus}
-                  alt=""
+                  onClick={() => {
+                    if (
+                      orderCount + 1 <=
+                      product.info[currentColorIndex].sizes[currentSizesIndex]
+                        .count
+                    ) {
+                      setOrderCount(orderCount + 1);
+                    }
+                  }}
                 />
               </div>
             </div>
@@ -216,7 +286,13 @@ const ProductDetail = () => {
               Reviews
             </NavLink>
           </div>
-          <Outlet />
+          <Outlet
+            context={{
+              detail: product.detail,
+              reviews: product.reviews,
+              reviewsStarsAverage,
+            }}
+          />
         </div>
 
         {/* <PopularProducts

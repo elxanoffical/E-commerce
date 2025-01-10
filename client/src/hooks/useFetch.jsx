@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 export const getData = (query, variables = {}) => {
+  
   const URL = "http://localhost:1337/graphql";
 
   const [data, setData] = useState(null);
