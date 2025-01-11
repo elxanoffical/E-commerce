@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ChevronRight from "../assets/icons/global/Chevron Right.svg";
 import {
   Link,
@@ -27,6 +27,18 @@ const ProductDetail = () => {
   const [currentSizesIndex, setCurrentSizesIndex] = useState(0);
   const [orderCount, setOrderCount] = useState(1);
 
+  // useEffect(() => {
+  //   if (product?.images?.length) {
+  //     const interval = setInterval(() => {
+  //       setImgCounter((changeCounter) =>
+  //         changeCounter === product.images.length - 1 ? 0 : changeCounter + 1
+  //       );
+  //     }, 2000); // 2 saniyəlik dəyişiklik intervalı
+
+  //     return () => clearInterval(interval); // Komponent unmount ediləndə intervalı təmizləyir
+  //   }
+  // }, [product?.images?.length]); // `product?.images?.length`-dən asılılığı yoxlayır
+
   const { documentId } = useParams();
 
   const navigate = useNavigate();
@@ -42,19 +54,19 @@ const ProductDetail = () => {
     genderFor
     images {
       url
-    }
-    info
-    name
-    price
-    reviews {
-      author
-      createdAt
-      description
-      documentId
-      stars
-    }
-  }
-    }`;
+      }
+      info
+      name
+      price
+      reviews {
+        author
+        createdAt
+        description
+        documentId
+        stars
+        }
+        }
+        }`;
 
   const { data, error, loading } = getData(productDetailPageQuery, {
     id: documentId,
@@ -67,6 +79,7 @@ const ProductDetail = () => {
     return <Error />;
   }
 
+ 
   const { product } = data;
   console.log(product.info);
 
@@ -108,7 +121,9 @@ const ProductDetail = () => {
                   <button
                     key={index}
                     onClick={() => setImgCounter(index)}
-                    className="bg-gray-400 focus:bg-black w-[10px] h-[10px] rounded-full"
+                    className={`w-[10px] h-[10px] rounded-full ${
+                      imgCounter === index ? "bg-black" : "bg-gray-400"
+                    }`}
                   ></button>
                 );
               })}
@@ -195,7 +210,7 @@ const ProductDetail = () => {
                         : "border-neutral-200"
                     } ${
                       item.count === 0
-                        ? "bg-neutral-100 cursor-not-allowed"
+                        ? "bg-neutral-200 cursor-not-allowed"
                         : ""
                     }`}
                   >
