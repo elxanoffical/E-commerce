@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 const FeaturesCard = ({ item }) => {
+ 
   return (
     <div className="md:w-[328px] md:h-[218px] py-3 flex flex-col items-center md:items-start gap-3">
       <div className="bg-neutral-100 w-12 h-12 rounded-full flex items-center justify-center">
