@@ -1,18 +1,31 @@
-import React from 'react'
-import Header from '../components/header'
-import Footer from '../components/footer'
-import ScrollToTop from '../hooks/useScrollToTop'
-import { Outlet } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import Header from "../components/header";
+import Footer from "../components/footer";
+import ScrollToTop from "../hooks/useScrollToTop";
+import { Outlet } from "react-router-dom";
+import Loading from "../components/common/loading";
 
 const MainLayout = () => {
-  return (
-   <>
-   <ScrollToTop/>
-   <Header/>
-   <Outlet/>
-   <Footer/>
-   </>
-  )
-}
+  const [loading, setLoading] = useState();
 
-export default MainLayout
+  useEffect(()=>{
+     setLoading(true)
+    setTimeout(()=>{
+      setLoading(false)
+    },2000)
+  },[])
+
+  {
+    return loading ? (
+      <Loading /> ) : (
+      <>
+        <ScrollToTop />
+        <Header />
+        <Outlet />
+        <Footer />
+      </>
+    );
+  }
+};
+
+export default MainLayout;

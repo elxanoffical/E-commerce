@@ -33,7 +33,7 @@ export const getData = (query, variables = {}) => {
   };
 
   useEffect(() => {
-    demo();
+    setTimeout(demo,2000);
   }, []);
 
   return { data, error, loading };

@@ -23,7 +23,7 @@ const ProductList = ({ products }) => {
         duration: 1,
         scrollTrigger: {
           trigger: featured.current, // Elementi izləmək üçün
-          start: "top 80%", // Scroll animasiyası nə vaxt başlamalıdır (element görünəndə)
+          start: "top 70%", // Scroll animasiyası nə vaxt başlamalıdır (element görünəndə)
           end: "bottom 20%", // Animasiya harada bitməli
           toggleActions: "play none none none", // Animasiya hərəkətləri
         },
