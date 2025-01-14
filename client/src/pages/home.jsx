@@ -12,7 +12,6 @@ import Features from "../components/features";
 
 const HomePage = () => {
   
-  
   const HomePageQuery = `{
   products {
     documentId

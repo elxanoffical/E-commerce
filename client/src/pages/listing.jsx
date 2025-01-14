@@ -7,7 +7,6 @@ import more from "../assets/icons/global/More.svg";
 import ChevronLeft from "../assets/icons/global/Chevron Left.svg";
 import { useNavigate } from "react-router-dom";
 import ScrollToTop from "../hooks/useScrollToTop";
-import { getData } from "../hooks/useFetch";
 import { products } from "../data/productsListing";
 
 
