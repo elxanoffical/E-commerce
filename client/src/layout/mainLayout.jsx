@@ -6,10 +6,14 @@ import { Outlet } from "react-router-dom";
 import Loading from "../components/common/loading";
 import { getData } from "../hooks/useFetch";
 import Error from "../components/common/error";
+import { useTranslation } from "react-i18next";
 
 const MainLayout = () => {
+  const { i18n } = useTranslation();
+  const [layoutLoading, setLayoutLoading] = useState();
+
   const Layoutquery = ` {
-  header {
+  header(locale:"${i18n.language}"){
     LightModeIcon {
       url
     }
@@ -37,16 +41,23 @@ const MainLayout = () => {
   }
 }
   `;
-
   const { data, error, loading } = getData(Layoutquery);
 
+  useEffect(() => {
+    setLayoutLoading(true);
+    setTimeout(() => {
+      setLayoutLoading(false);
+    }, 2000);
+  }, [i18n.language]);
+
+  if (layoutLoading) return <Loading />;
   if (loading) return <Loading />;
   if (error) return <Error />;
 
   return (
     <>
       <ScrollToTop />
-      <Header data={data.header} />
+      <Header data={data?.header} />
       <Outlet />
       <Footer />
     </>
