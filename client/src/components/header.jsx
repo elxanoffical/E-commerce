@@ -12,7 +12,6 @@ import { useTranslation } from "react-i18next";
 import { changeLanguage } from "i18next";
 
 const Header = ({ data }) => {
-  console.log(data);
 
   const {i18n,t} = useTranslation()
   const [isHover, setIsHover] = useState();
@@ -55,7 +54,7 @@ const Header = ({ data }) => {
         <div className="flex items-center justify-between gap-10 xl:gap-24">
           <Link ref={logo} to="/" className="flex items-center gap-3">
             <img src={`http://localhost:1337${data.LogoImg.url}`} alt="" />
-            <h1 className="text-xl font-semibold">{data.logo} {t('welcome',)}</h1>
+            <h1 className="text-xl font-semibold">{data.logo}</h1>
           </Link>
 
           <ul ref={navs} className="lg:flex hidden items-center gap-8">

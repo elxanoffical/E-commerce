@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import i18n from "../i18n";
 
 export const getData = (query, variables = {}) => {
   
@@ -18,12 +19,12 @@ export const getData = (query, variables = {}) => {
         query,
         variables,
       });
-      const { data, error } = response;
-      if (error) {
+      const { data, errors } = response.data;
+      if (errors) {
         setError(true);
-        throw new Error(error.message);
+        throw new Error(errors.message);
       }
-      setData(data.data);
+      setData(data);
     } catch (err) {
       setError(true);
       console.log(err.message);
@@ -33,41 +34,9 @@ export const getData = (query, variables = {}) => {
   };
 
   useEffect(() => {
+    setLoading(true)
     setTimeout(demo,2000);
-  }, []);
+  }, [i18n.language]);
 
   return { data, error, loading };
 };
-
-// export const getData = (path, id = "") => {
-//   const URL = "http://localhost:1337";
-//   const [data, setData] = useState(id ? null : []);
-//   const [error, setError] = useState(false);
-//   const [loading, setLoading] = useState(true);
-
-//   const demo = async () => {
-//     try {
-//       setData(null);
-//       setError(false);
-//       setLoading(true);
-//       const response = await axios.get(`${URL}/api/${path}/${id}?populate=*`);
-//       const { data, error } = response;
-//       if (error) {
-//         setError(true);
-//         throw new Error(error.message);
-//       }
-//       setData(data.data);
-//     } catch (err) {
-//       setError(true)
-//       console.log(err.message);
-//     } finally {
-//       setLoading(false);
-//     }
-//   };
-
-//   useEffect(() => {
-//     demo();
-//   }, []);
-
-//   return { data, error, loading };
-// };
