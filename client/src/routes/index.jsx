@@ -14,11 +14,11 @@ export const routes = createBrowserRouter([
     element: <MainLayout />,
     children: [
       {
-        index: true,
+        path: "/home",
         element: <HomePage />,
       },
       {
-        path: "/listingPage",
+        path: "/categories",
         element: <ListingPage />,
       },
       {

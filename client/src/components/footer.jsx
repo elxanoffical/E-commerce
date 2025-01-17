@@ -99,7 +99,7 @@ const Footer = ({ subscribeData, linksData }) => {
             </h3>
           </div>
           <p className="text-sm tracking-wide text-neutral-500 w-[250px]">
-            {linksData.descripton}
+            {linksData.description}
           </p>
           <div className="flex items-center gap-6 mt-5">
             {linksData.socialMediaImg.map((item, index) => {

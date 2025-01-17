@@ -65,7 +65,7 @@ const PopularProducts = ({ title, subTitle, textAlign, products }) => {
           </p>
           <h3 ref={bestShop} className={`text-2xl text-${textAlign} font-bold`}>{subTitle}</h3>
         </div>
-        <div ref={cards} className="container grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-[140px]">
+        <div ref={cards} className="container grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-[140px]">
           {products?.slice(0, 4).map((item, index) => (
             <ProductCard item={item} key={index} />
           ))}

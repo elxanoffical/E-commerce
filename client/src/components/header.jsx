@@ -1,12 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import Logomark from "../assets/images/Logomark.svg";
-import cart from "../assets/icons/global/cart.svg";
-import AdminUser from "../assets/icons/global/Admin user.svg";
-import search from "../assets/icons/global/Search.svg";
 import { Link } from "react-router-dom";
 import Cart from "./cart";
-import TopAds from "./topAds";
-import menu from "../assets/icons/global/Menu.svg";
 import { gsap } from "gsap";
 import { useTranslation } from "react-i18next";
 import { changeLanguage } from "i18next";
@@ -53,11 +47,10 @@ const Header = ({ data }) => {
 
   return (
     <header className=" flex flex-col">
-      <TopAds text=" Get 25% OFF on your first order." btnText={"Order Now"} />
 
       <nav className="flex justify-between items-center h-[84px] container mx-auto">
         <div className="flex items-center justify-between gap-10 xl:gap-24">
-          <Link ref={logo} to="/" className="flex items-center gap-3">
+          <Link ref={logo} to="/home" className="flex items-center gap-3">
             <img src={`http://localhost:1337${data.LogoImg.url}`} alt="" />
             <h1 className="text-xl font-semibold">{data.logo}</h1>
           </Link>

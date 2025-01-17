@@ -3,14 +3,13 @@ import ProductList from "../components/productList";
 import Loading from "../components/common/loading";
 import Error from "../components/common/error";
 import { getData } from "../hooks/useFetch";
-
-import categoryImg from "../assets/images/categoryImage.svg";
-import heroImg from "../assets/images/heroImg.svg";
 import PopularProducts from "../components/popularProducts";
 import HeroBottom from "../components/heroBottom";
 import Features from "../components/features";
+import { useTranslation } from "react-i18next";
 
 const HomePage = () => {
+  const {i18n} = useTranslation()
   
   const HomePageQuery = `{
   products {
@@ -22,13 +21,26 @@ const HomePage = () => {
       url
     }
   }
-  features {
+  features(locale:"${i18n.language}") {
     icon {
       url
     }
     title
     subTitle
     documentId
+  }
+
+   heroes(locale:"${i18n.language}") {
+    title
+    subTitle
+    img {
+      url
+    }
+    btnText
+    btnImg {
+      url
+    }
+    btnHref
   }
 }
 `;
@@ -43,27 +55,14 @@ const HomePage = () => {
     return <Error />;
   }
 
-  const { products,features } = data;
+  const { products,features,heroes } = data;
 
   return (
     <>
       <Hero
-        title=" Fresh Arrivals Online"
-        subTitle="Discover Our Newest Collection Today."
-        btnText="View Collection"
-        btnHref=""
-        img={heroImg}
+        data={heroes[0]}
       />
-      {/* <section className="">
-        <div
-          className=" container py-8 mt-10 gap-10
-        grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-        >
-          {features?.map((item) => {
-            return <FeaturesCard key={item.documentId} item={item} />;
-          })}
-        </div>
-      </section> */}
+
       <Features features={features}/>
 
       <PopularProducts
@@ -74,12 +73,7 @@ const HomePage = () => {
       />
 
       <HeroBottom
-        title="Browse Our Fashion Paradise!"
-        subTitle="Step into a world of style and explore our diverse collection of 
-          clothing categories."
-        btnText="Start Browsing"
-        btnHref=""
-        img={categoryImg}
+       data={heroes[1]}
       />
 
       <ProductList 

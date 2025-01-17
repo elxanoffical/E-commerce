@@ -7,6 +7,7 @@ import Loading from "../components/common/loading";
 import { getData } from "../hooks/useFetch";
 import Error from "../components/common/error";
 import { useTranslation } from "react-i18next";
+import TopAds from "../components/topAds";
 
 const MainLayout = () => {
   const { i18n } = useTranslation();
@@ -61,6 +62,10 @@ const MainLayout = () => {
       }
       socialMediaLinks
     }
+      top(locale:"${i18n.language}") {
+    btnTitle
+    title
+  }
   }
   `;
 
@@ -79,6 +84,7 @@ const MainLayout = () => {
 
   return (
     <>
+      <TopAds data={data?.top} />
       <ScrollToTop />
       <Header data={data?.header} />
       <Outlet />

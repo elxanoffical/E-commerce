@@ -25,7 +25,7 @@ const Details = () => {
         </p>
       </div>
 
-      <ul className=" border ml-4 list-disc flex flex-col gap-2 ">
+      <ul className="  ml-4 list-disc flex flex-col gap-2 ">
         <li className="text-[15px] text-neutral-600 font-normal">
           Premium Quality
         </li>

@@ -74,23 +74,23 @@ const ProductList = ({ products }) => {
             />
             <div className="flex flex-col gap-3 mt-4">
               <h4 className="text-[14px] font-medium">{item.name}</h4>
-              <div className="flex items-center gap-7">
-                <div className="flex gap-4 items-center">
+              <div className="flex items-center gap-4 sm:gap-7">
+                <div className="flex gap-2 sm:gap-4 items-center">
                   {item?.beforePrice && (
-                    <p className="text-gray-400 text-[14px] line-through tracking-wider">
+                    <p className="text-gray-400 text-[12px] sm:text-[14px] line-through tracking-wider">
                       ${item.beforePrice}
                     </p>
                   )}
-                  <p className="text-neutral-600 text-[16px] tracking-wide">
+                  <p className="text-neutral-600 text-[14px] sm:text-[16px] tracking-wide">
                     ${item.price}
                   </p>
                 </div>
                 <div className="flex items-center gap-4">
                   <label
-                    className="text-xs font-medium border py-1 px-4 rounded-2xl"
+                    className="text-[9px] sm:text-sm font-medium border py-1 px-4 rounded-2xl"
                     htmlFor=""
                   >
-                    {item?.true ? "IN STOCK" : "OUT OF STOCK"}
+                    {item ? "IN STOCK" : "OUT OF STOCK"}
                   </label>
                 </div>
               </div>
