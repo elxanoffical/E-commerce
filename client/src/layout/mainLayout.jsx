@@ -39,8 +39,31 @@ const MainLayout = () => {
       url
     }
   }
-}
+    footherSub(locale:"${i18n.language}") {
+      btnText
+        inputPlaceholder
+        subText
+        text
+    }
+    footherLink(locale:"${i18n.language}") {
+      description
+      links
+      logoImg {
+        url
+      }
+      logoText
+      paymentImg {
+        url
+      }
+      paymentTitle
+      socialMediaImg {
+        url
+      }
+      socialMediaLinks
+    }
+  }
   `;
+
   const { data, error, loading } = getData(Layoutquery);
 
   useEffect(() => {
@@ -59,7 +82,7 @@ const MainLayout = () => {
       <ScrollToTop />
       <Header data={data?.header} />
       <Outlet />
-      <Footer />
+      <Footer subscribeData={data?.footherSub} linksData={data?.footherLink} />
     </>
   );
 };

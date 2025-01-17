@@ -13,7 +13,7 @@ import { changeLanguage } from "i18next";
 
 const Header = ({ data }) => {
 
-  const {i18n,t} = useTranslation()
+  const { i18n, t } = useTranslation();
   const [isHover, setIsHover] = useState();
 
   const logo = useRef();
@@ -46,6 +46,11 @@ const Header = ({ data }) => {
     );
   }, []);
 
+  const langs = ["az", "en"];
+  const languages = langs.filter((item) => item != i18n.language);
+  languages.unshift(i18n.language);
+
+
   return (
     <header className=" flex flex-col">
       <TopAds text=" Get 25% OFF on your first order." btnText={"Order Now"} />
@@ -58,10 +63,10 @@ const Header = ({ data }) => {
           </Link>
 
           <ul ref={navs} className="lg:flex hidden items-center gap-8">
-            {data.Links.map((item,index) => {
+            {data.Links.map((item, index) => {
               return (
                 <Link
-                key={index}
+                  key={index}
                   to={item.href}
                   className="text-neutral-500 hover:text-neutral-700 transition-all duration-200"
                 >
@@ -94,7 +99,12 @@ const Header = ({ data }) => {
             onMouseEnter={() => setIsHover(true)}
             onMouseLeave={() => setIsHover(false)}
           >
-            <img ref={imgCart} className=" cursor-pointer" src={`http://localhost:1337${data.basketIcon.url}`} alt="" />
+            <img
+              ref={imgCart}
+              className=" cursor-pointer"
+              src={`http://localhost:1337${data.basketIcon.url}`}
+              alt=""
+            />
             <div
               className={`absolute top-full right-0 shadow-lg transition-all duration-300 ease-in-out transform ${
                 isHover
@@ -107,19 +117,33 @@ const Header = ({ data }) => {
           </div>
 
           <Link to="/login">
-            <img ref={imgAdmin} src={`http://localhost:1337${data.userIcon.url}`} alt="" />
+            <img
+              ref={imgAdmin}
+              src={`http://localhost:1337${data.userIcon.url}`}
+              alt=""
+            />
           </Link>
 
-          <img className="sm:hidden" src={`http://localhost:1337${data.menuIcon.url}`} alt="" />
+          <img
+            className="sm:hidden"
+            src={`http://localhost:1337${data.menuIcon.url}`}
+            alt=""
+          />
 
-          <select onChange={(e)=> {
-            changeLanguage(e.target.value)
-            localStorage.setItem('lang',e.target.value)
-          }}>
-            <option value="az">az</option>
-            <option value="en">en</option>
+          <select
+            onChange={(e) => {
+              changeLanguage(e.target.value);
+              localStorage.setItem("lang", e.target.value);
+            }}
+          >
+            {languages.map((item, index) => {
+              return (
+                <option key={index} value={item}>
+                  {item}
+                </option>
+              );
+            })}
           </select>
-
         </div>
       </nav>
     </header>
