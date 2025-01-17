@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -61,9 +62,9 @@ const ProductList = ({ products }) => {
         <button ref={latest} className="text-neutral-500">Latest</button>
       </div>
       <div ref={cards} className="container grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-[168px]">
-        {products.map((item, index) => (
-          <div 
-          
+        {products.slice(0,4).map((item, index) => (
+          <Link 
+          to={`/products/${item.documentId}`}
             onClick={() => prdocut(item.id)}
             key={index}
             className="px-2 py-4 flex flex-col gap-4 shadow-lg  rounded-lg"
@@ -95,7 +96,7 @@ const ProductList = ({ products }) => {
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

@@ -5,22 +5,46 @@ import close from "../assets/icons/global/X.svg";
 import ChevronDown from "../assets/icons/global/Chevron Down.svg";
 import more from "../assets/icons/global/More.svg";
 import ChevronLeft from "../assets/icons/global/Chevron Left.svg";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ScrollToTop from "../hooks/useScrollToTop";
-import { products } from "../data/productsListing";
-
+import Loading from "../components/common/loading";
+import Error from "../components/common/error";
+import { getData } from "../hooks/useFetch";
+// import { products } from "../data/productsListing";
 
 const ListingPage = () => {
   const navigate = useNavigate();
 
-  const prdocut = (documentId) => {
-    navigate(`/product/${documentId}`);
-  };
-
-
+  // const prdocut = (documentId) => {
+  //   navigate(`/product/${documentId}`);
+  // };
   const handleClick = () => {
-    navigate('/')
+    navigate("/");
   };
+
+  const listingProducts = `{
+    products {
+      documentId
+      name
+      price
+      beforePrice
+      images {
+        url
+      }
+    }
+  }
+  `;
+
+  const { data, error, loading } = getData(listingProducts);
+
+  if (loading) {
+    return <Loading />;
+  }
+  if (error) {
+    return <Error />;
+  }
+
+  const { products } = data;
 
   return (
     <>
@@ -39,8 +63,8 @@ const ListingPage = () => {
           </div>
         </div>
 
-        <div className="flex container ">
-          <div className="">
+        <div className="flex flex-col md:flex-row container ">
+          <div className="mb-[40px] sm:mb-0">
             <FilterSidebar />
           </div>
 
@@ -72,16 +96,15 @@ const ListingPage = () => {
             </div>
 
             <div className="flex justify-center flex-wrap gap-8">
-              {products.map((item, index) => (
-                <div
-                  onClick={() => prdocut(item.documentId)}
+              {products?.map((item, index) => (
+                <Link
+                  to={`/products/${item.documentId}`}
                   key={index}
                   className="px-2 py-4 flex flex-col gap-6 shadow-lg hover:scale-105 transition-all duration-300 rounded-lg"
                 >
                   <img
-                    className="bg-neutral-100 rounded"
-                    // src={`http://localhost:1337${item.img.url}`}
-                    src={item.img}
+                    className="bg-neutral-100 rounded h-[260px] w-[210px] md:h-[300px] md:w-[250px]"
+                    src={`http://localhost:1337${item.images[0].url}`}
                   />
                   <div className="flex flex-col gap-3 mt-4">
                     <h4 className="text-[14px] font-medium">{item.name}</h4>
@@ -106,7 +129,7 @@ const ListingPage = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
 

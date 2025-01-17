@@ -43,7 +43,7 @@ const ProductDetail = () => {
 
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate("/listingPage");
+    navigate("/home");
   };
 
   const productDetailPageQuery = `query($id: ID!){
@@ -79,7 +79,6 @@ const ProductDetail = () => {
     return <Error />;
   }
 
- 
   const { product } = data;
   console.log(product.info);
 
@@ -88,6 +87,7 @@ const ProductDetail = () => {
   }, 0);
 
   let reviewsStarsAverage = (sumOfStar / product.reviews.length).toFixed(2);
+  
 
   return (
     <>
@@ -99,7 +99,7 @@ const ProductDetail = () => {
               onClick={handleClick}
               className="font-medium text-neutral-500"
             >
-              Ecommerce{" "}
+              Ecommerce
             </button>
             <img src={ChevronRight} alt="" />
             <span className="font-medium text-neutral-900">
@@ -108,10 +108,10 @@ const ProductDetail = () => {
           </div>
         </div>
 
-        <div className="container flex gap-[120px] mb-32">
-          <div className="w-[534px] bg-neutral-100 flex flex-col gap-10 items-center py-6">
+        <div className="container flex flex-col md:flex-row gap-[120px] mb-32">
+          <div className="w-[400] sm:w-[534px] bg-neutral-100 flex flex-col gap-10 items-center py-6">
             <img
-              className="h-[404px]"
+              className="h-[404px] "
               src={`http://localhost:1337${product?.images[imgCounter].url}`}
               alt=""
             />
@@ -160,7 +160,7 @@ const ProductDetail = () => {
               </p>
             </div>
 
-            <div className="flex flex-col mb-4">
+            <div className="flex flex-col gap-3 mb-4">
               <h3 className="text-[13px] text-neutral-500 font-medium tracking-wider">
                 AVAILABLE COLORS
               </h3>
