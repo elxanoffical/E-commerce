@@ -7,7 +7,7 @@ const TopAds = ({ data }) => {
       <span className="text-white font-light">
        {data?.title}
       </span>
-      <Link to='/' className=" text-white hover:border-b transition-all">
+      <Link to='/home' className=" text-white hover:border-b transition-all">
         {data?.btnTitle}
       </Link>
     </div>

@@ -7,6 +7,7 @@ import MainLayout from "../layout/mainLayout";
 import Login from "../pages/login";
 import SignUp from "../pages/signUp";
 import ProductDetail from "../pages/productDetail";
+import About from "../pages/about";
 
 export const routes = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ export const routes = createBrowserRouter([
       {
         path: "/home",
         element: <HomePage />,
+      },
+      {
+        path: "/about",
+        element: <About />,
       },
       {
         path: "/categories",
