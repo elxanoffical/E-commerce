@@ -4,37 +4,41 @@ import aboutImg from "../assets/images/aboutImg.jpg";
 const About = () => {
   return (
     <div className="border flex flex-col items-center justify-center">
-      <div className="">
-        <img src={aboutImg} alt="About Us" className="about-img" />
+      <div className="border-2 border-black container relative">
+        <img src={aboutImg} className="w-[1568px]" />
+        <h2 className="text-[23px] font-light text-white absolute bottom-8 left-20">
+          About us
+        </h2>
       </div>
 
-      <div className="text-section container mx-auto px-6 py-12">
-        <h2 className="text-2xl font-bold mb-4">About us</h2>
-        <p className="text-lg text-gray-600 mb-6">
-          We have a more interesting life if you wear impressive clothes.
-          Sometimes the simplest things are the most profound. Attention to
-          detail is of utmost importance when you want to look good.
-        </p>
-        <p className="text-lg text-gray-600 mb-6">
-          Design and style should work toward making you look good and feel good
-          without a lot of effort so you can get on with the things that matter.
-          War taught me that not everything is glamorous.
-        </p>
+      <div className=" border flex flex-col lg:flex-row gap-10 lg:gap-28 container mx-auto md:px-20 my-12">
+        <div className="border w-[100%] sm:w-[90%] lg:w-[60%]">
+          <p className="text-[15px] font-normal text-neutral-500 mb-6 leading-7">
+            We have a more interesting life if you wear impressive clothes.
+            Sometimes the simplest things are the most profound. Attention to
+            detail is of utmost importance when you want to look{" "}
+            <span className="block">good.</span>
+          </p>
+          <p className="text-[15px] font-normal text-neutral-500 mb-6 leading-7">
+            Design and style should work toward making you look good and feel
+            good without a lot of effort so you can get on with the things that
+            matter. War taught me that not everything is glamorous.
+          </p>
+        </div>
 
-        <div className="hours-section">
-          <h3 className="text-xl font-medium mb-4">Operating Hours</h3>
-          <ul className="text-lg text-gray-600">
-            <li className="flex justify-between mb-2">
-              <span>Monday – Friday</span>
-              <span>9:30 – 20:00</span>
+        <div className=" border md:w-[335px] flex flex-col items-start pt-2">
+          <ul className="flex flex-col gap-3">
+            <li className="flex items-center gap-[60px] md:gap-[96]">
+              <span className=" text-[17px] font-medium text-black">Monday – Friday</span>
+              <span className="text-[17px] text-neutral-500">9:30 - 20:00</span>
             </li>
-            <li className="flex justify-between mb-2">
-              <span>Saturday</span>
-              <span>11:00 – 18:00</span>
+            <li className="flex items-center gap-[120px] md:gap-[156px]">
+              <span className=" text-[17px] font-medium text-black">Saturday</span>
+              <span className="text-[17px] text-neutral-500">11:00 - 18:00</span>
             </li>
-            <li className="flex justify-between">
-              <span>Sunday</span>
-              <span>Closed</span>
+            <li className="flex items-center gap-[132px] md:gap-[168px]">
+              <span className=" text-[17px] font-medium text-black">Sunday</span>
+              <span className="text-[17px] text-neutral-500">Closed</span>
             </li>
           </ul>
         </div>

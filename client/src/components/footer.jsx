@@ -72,10 +72,10 @@ const Footer = ({ subscribeData, linksData }) => {
               {subscribeData.subText}
             </p>
           </div>
-          <div className="flex items-center gap-4 text-center">
+          <div className="flex items-center gap-4 sm:gap-8 text-center">
             <input
               ref={inpt}
-              className="border flex-1 py-[10px] px-4 rounded-md bg-transparent w-80
+              className="border flex-1 py-[10px] px-4 rounded-md bg-transparent w-[50px]
              outline-none text-neutral-300 font-medium sm:w-[250px] md:w-[320px]"
               type="text"
               placeholder={subscribeData.inputPlaceholder}

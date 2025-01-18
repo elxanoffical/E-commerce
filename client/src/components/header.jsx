@@ -49,7 +49,7 @@ const Header = ({ data }) => {
     <header className=" flex flex-col">
       <nav className="flex justify-between items-center h-[84px] container mx-auto">
         <div className="flex items-center justify-between gap-10 xl:gap-24">
-          <Link ref={logo} to="/home" className="flex items-center gap-3">
+          <Link ref={logo} className="flex items-center gap-3">
             <img src={`http://localhost:1337${data.LogoImg.url}`} alt="" />
             <h1 className="text-xl font-semibold">{data.logo}</h1>
           </Link>
