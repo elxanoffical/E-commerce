@@ -5,6 +5,14 @@ import { routes } from './routes'
 import './style/global.css'
 import './i18n/index'
 
+if(!localStorage.getItem('lang')){
+  localStorage.setItem('lang','az')
+}
+
+if(!localStorage.getItem('favorites')){
+  localStorage.setItem('favorites','[]')
+}
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <>

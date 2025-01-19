@@ -2,16 +2,26 @@ import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 gsap.registerPlugin(ScrollTrigger);
 
 const ProductCard = ({ item }) => {
+  const isFavorite = JSON.parse(
+    localStorage.getItem("favorites").includes(item.documentId)
+  );
 
- 
   return (
     <Link
       to={`/products/${item.documentId}`}
-      className="px-2 py-4 flex flex-col gap-4 shadow-lg rounded-lg"
+      className="px-2 py-4 flex flex-col gap-4 shadow-lg rounded-lg relative"
     >
+      <div className="absolute top-6 right-4 border rounded p-2 flex items-center justify-center">
+        {isFavorite ? (
+          <FaHeart className="" style={{ fill: "red" }} />
+        ) : (
+          <FaRegHeart />
+        )}
+      </div>
       <img
         className="bg-neutral-100 rounded h-[100%]"
         src={`http://localhost:1337${item?.images[0].url}`}

@@ -20,34 +20,47 @@ import { getData } from "../hooks/useFetch";
 import PopularProducts from "../components/popularProducts";
 import Loading from "../components/common/loading";
 import Error from "../components/common/error";
+import { useTranslation } from "react-i18next";
+import ShareButton from "../components/shareButton";
+import { FaHeart } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
+import i18next from "i18next";
 
 const ProductDetail = () => {
+  const { documentId } = useParams();
+  const initialFavorite = JSON.parse(localStorage.getItem("favorites").includes(documentId)
+  );
   const [imgCounter, setImgCounter] = useState(0);
   const [currentColorIndex, setCurrentColorIndex] = useState(0);
   const [currentSizesIndex, setCurrentSizesIndex] = useState(0);
   const [orderCount, setOrderCount] = useState(1);
+  const [isFavorite, setIsFavorite] = useState(initialFavorite);
 
-  // useEffect(() => {
-  //   if (product?.images?.length) {
-  //     const interval = setInterval(() => {
-  //       setImgCounter((changeCounter) =>
-  //         changeCounter === product.images.length - 1 ? 0 : changeCounter + 1
-  //       );
-  //     }, 2000); // 2 saniyəlik dəyişiklik intervalı
+  const { i18n } = useTranslation();
 
-  //     return () => clearInterval(interval); // Komponent unmount ediləndə intervalı təmizləyir
-  //   }
-  // }, [product?.images?.length]); // `product?.images?.length`-dən asılılığı yoxlayır
-
-  const { documentId } = useParams();
 
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate("/home");
+    navigate("/");
+  };
+
+  const toggleIsFavorite = (documentId) => {
+    const favoriteString = localStorage.getItem("favorites");
+    const favoritesArr = JSON.parse(favoriteString);
+    let newFavoritesArr;
+    if (favoritesArr.includes(documentId)) {
+      newFavoritesArr = favoritesArr.filter((item) => item != documentId)
+      setIsFavorite(false);
+    } else {
+      setIsFavorite(true);
+      favoritesArr.push(documentId);
+      newFavoritesArr = favoritesArr;
+    }
+    localStorage.setItem("favorites", JSON.stringify(newFavoritesArr));
   };
 
   const productDetailPageQuery = `query($id: ID!){
-      product(documentId: $id) {
+      product(documentId: $id,locale:"${i18n.language}") {
     beforePrice
     category
     detail
@@ -64,13 +77,23 @@ const ProductDetail = () => {
         description
         documentId
         stars
-        }
-        }
-        }`;
+     }
+    }
+    products (locale:"${i18n.language}"){
+      documentId
+      name
+      price
+      beforePrice
+      images {
+        url
+      }
+  }
+ }`;
 
   const { data, error, loading } = getData(productDetailPageQuery, {
     id: documentId,
   });
+
 
   if (loading) {
     return <Loading />;
@@ -79,15 +102,14 @@ const ProductDetail = () => {
     return <Error />;
   }
 
-  const { product } = data;
-  console.log(product.info);
+  const { product, products } = data;
+  console.log(product.reviews)
 
   let sumOfStar = product.reviews.reduce((acc, review) => {
     return acc + review.stars;
   }, 0);
 
   let reviewsStarsAverage = (sumOfStar / product.reviews.length).toFixed(2);
-  
 
   return (
     <>
@@ -133,7 +155,7 @@ const ProductDetail = () => {
           <div className=" flex flex-col w-[440px] py-2">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-2xl font-bold">{product?.name}</h2>
-              <img className=" cursor-pointer" src={share} alt="" />
+              <ShareButton title={product?.name} />
             </div>
 
             <div className="flex items-center gap-2 mb-6">
@@ -259,8 +281,11 @@ const ProductDetail = () => {
                 >
                   Add to cart
                 </button>
-                <button className="border py-[10px] px-[10px] rounded">
-                  <img src={heart} alt="" />
+                <button
+                  onClick={() => toggleIsFavorite(documentId)}
+                  className="border py-[10px] px-[10px] rounded"
+                >
+                  {isFavorite ? <FaHeart style={{fill: 'red'}}/> : <FaRegHeart />}
                 </button>
               </div>
               <span className="font-medium text-[13px] text-neutral-500">
@@ -310,12 +335,12 @@ const ProductDetail = () => {
           />
         </div>
 
-        {/* <PopularProducts
+        <PopularProducts
           title="Shop Now"
           subTitle="Best Selling"
           textAlign="start"
           products={products}
-        /> */}
+        />
       </div>
     </>
   );

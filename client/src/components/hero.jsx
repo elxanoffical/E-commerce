@@ -3,6 +3,7 @@ import arrowRight from "../assets/icons/global/Arrow Right.svg";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Link } from "react-router-dom";
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = ({data}) => {
@@ -92,7 +93,7 @@ const Hero = ({data}) => {
           >
             {data?.subTitle}
           </p>
-          <button
+          <Link to={'/categories'}
             ref={heroBtn}
             className="bg-neutral-900 flex gap-1 items-center text-white px-3 py-[6px] sm:px-5 sm:py-3 rounded
            mt-8 text-xs group"
@@ -103,7 +104,7 @@ const Hero = ({data}) => {
               src={`http://localhost:1337${data?.btnImg.url}`}
               alt=""
             />
-          </button>
+          </Link>
         </div>
 
         <img

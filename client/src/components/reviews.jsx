@@ -7,6 +7,7 @@ import { useOutletContext } from "react-router-dom";
 
 const Reviews = () => {
   const { reviews } = useOutletContext();
+  console.log(reviews)
 
   let sumOfStar = reviews.reduce((acc, review) => {
     return acc + review.stars;

@@ -12,7 +12,7 @@ const HomePage = () => {
   const {i18n} = useTranslation()
   
   const HomePageQuery = `{
-  products {
+  products (locale:"${i18n.language}"){
     documentId
     name
     price

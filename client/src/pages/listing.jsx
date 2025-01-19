@@ -10,14 +10,10 @@ import ScrollToTop from "../hooks/useScrollToTop";
 import Loading from "../components/common/loading";
 import Error from "../components/common/error";
 import { getData } from "../hooks/useFetch";
-// import { products } from "../data/productsListing";
 
 const ListingPage = () => {
   const navigate = useNavigate();
 
-  // const prdocut = (documentId) => {
-  //   navigate(`/product/${documentId}`);
-  // };
   const handleClick = () => {
     navigate("/");
   };
