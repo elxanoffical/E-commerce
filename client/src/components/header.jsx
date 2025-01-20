@@ -4,9 +4,9 @@ import Cart from "./cart";
 import { gsap } from "gsap";
 import { useTranslation } from "react-i18next";
 import { changeLanguage } from "i18next";
+import { FaLaptopMedical } from "react-icons/fa";
 
-const Header = ({ data }) => {
-
+const Header = ({ data, setIsDarkMode, darkMode }) => {
   const { i18n, t } = useTranslation();
   const [isHover, setIsHover] = useState();
 
@@ -44,12 +44,11 @@ const Header = ({ data }) => {
   const languages = langs.filter((item) => item != i18n.language);
   languages.unshift(i18n.language);
 
-
   return (
-    <header className=" flex flex-col">
+    <header className=" flex flex-col dark:bg-black">
       <nav className="flex justify-between items-center h-[84px] container mx-auto">
         <div className="flex items-center justify-between gap-10 xl:gap-24">
-          <Link ref={logo} to={'/'} className="flex items-center gap-3">
+          <Link ref={logo} to={"/"} className="flex items-center gap-3">
             <img src={`http://localhost:1337${data.LogoImg.url}`} alt="" />
             <h1 className="text-xl font-semibold">{data.logo}</h1>
           </Link>
@@ -121,6 +120,27 @@ const Header = ({ data }) => {
             src={`http://localhost:1337${data.menuIcon.url}`}
             alt=""
           />
+          <div
+            className="cursor-pointer"
+            onClick={() => {
+              localStorage.setItem("isDarkMode", !darkMode);
+              setIsDarkMode(!darkMode);
+            }}
+          >
+            {darkMode ? (
+              <img
+                className="w-5"
+                src={`http://localhost:1337${data.LightModeIcon.url}`}
+                alt=""
+              />
+            ) : (
+              <img
+                className="w-5"
+                src={`http://localhost:1337${data.darkModeIcon.url}`}
+                alt=""
+              />
+            )}
+          </div>
 
           <select
             onChange={(e) => {

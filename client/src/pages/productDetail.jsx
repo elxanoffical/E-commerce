@@ -104,6 +104,7 @@ const ProductDetail = () => {
 
   const { product, products } = data;
 
+
   let sumOfStar = product.reviews.reduce((acc, review) => {
     return acc + review.stars;
   }, 0);

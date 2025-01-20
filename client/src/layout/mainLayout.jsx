@@ -13,6 +13,7 @@ const MainLayout = () => {
   const { i18n } = useTranslation();
   const [layoutLoading, setLayoutLoading] = useState();
 
+
   const Layoutquery = ` {
   header(locale:"${i18n.language}"){
     LightModeIcon {
@@ -72,24 +73,34 @@ const MainLayout = () => {
   const { data, error, loading } = getData(Layoutquery);
 
   useEffect(() => {
-    setLayoutLoading(true);
+    setLayoutLoading(true)
+    ;
     setTimeout(() => {
       setLayoutLoading(false);
     }, 2000);
   }, [i18n.language]);
+
+  const [darkMode, setIsDarkMode] = useState(
+    JSON.parse(localStorage.getItem("isDarkMode"))
+  );
+
 
   if (layoutLoading) return <Loading />;
   if (loading) return <Loading />;
   if (error) return <Error />;
 
   return (
-    <>
+    <div className={darkMode ? "dark" : ""}>
       <TopAds data={data?.top} />
       <ScrollToTop />
-      <Header data={data?.header} />
+      <Header
+        setIsDarkMode={setIsDarkMode}
+        darkMode={darkMode}
+        data={data?.header}
+      />
       <Outlet />
       <Footer subscribeData={data?.footherSub} linksData={data?.footherLink} />
-    </>
+    </div>
   );
 };
 

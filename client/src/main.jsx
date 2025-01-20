@@ -9,6 +9,10 @@ if(!localStorage.getItem('lang')){
   localStorage.setItem('lang','az')
 }
 
+if(!localStorage.getItem('isDarkMode')){
+  localStorage.setItem('isDarkMode','false')
+}
+
 if(!localStorage.getItem('favorites')){
   localStorage.setItem('favorites','[]')
 }
