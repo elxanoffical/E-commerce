@@ -78,24 +78,24 @@ const Hero = ({data}) => {
   }, []);
 
   return (
-    <div className="h-[440px] bg-neutral-100 ">
+    <div className="h-[440px] bg-neutral-100 dark:bg-neutral-900 ">
       <div className="container sm:pt-6 pt-[20px] flex flex-col sm:flex-row sm:items-center sm:justify-between ">
         <div className="flex flex-col gap-3 items-start py-2">
           <h3
             ref={herotext}
-            className="text-neutral-800 text-2xl sm:text-3xl font-semibold"
+            className="text-neutral-800 text-2xl sm:text-3xl font-semibold dark:text-neutral-100"
           >
             {data?.title}
           </h3>
           <p
             ref={heroSubText}
-            className="text-neutral-600 text-sm tracking-wide text-start w-[80%] sm:w-[90%]"
+            className="text-neutral-600 text-sm tracking-wide text-start w-[80%] sm:w-[90%] dark:text-neutral-100"
           >
             {data?.subTitle}
           </p>
           <Link to={'/categories'}
             ref={heroBtn}
-            className="bg-neutral-900 flex gap-1 items-center text-white px-3 py-[6px] sm:px-5 sm:py-3 rounded
+            className="bg-neutral-900 dark:border dark:text-neutral-100 flex gap-1 items-center text-white px-3 py-[6px] sm:px-5 sm:py-3 rounded
            mt-8 text-xs group"
           >
             {data?.btnText}

@@ -4,7 +4,6 @@ import Cart from "./cart";
 import { gsap } from "gsap";
 import { useTranslation } from "react-i18next";
 import { changeLanguage } from "i18next";
-import { FaLaptopMedical } from "react-icons/fa";
 
 const Header = ({ data, setIsDarkMode, darkMode }) => {
   const { i18n, t } = useTranslation();
@@ -50,7 +49,7 @@ const Header = ({ data, setIsDarkMode, darkMode }) => {
         <div className="flex items-center justify-between gap-10 xl:gap-24">
           <Link ref={logo} to={"/"} className="flex items-center gap-3">
             <img src={`http://localhost:1337${data.LogoImg.url}`} alt="" />
-            <h1 className="text-xl font-semibold">{data.logo}</h1>
+            <h1 className="text-xl font-semibold dark:text-neutral-100">{data.logo}</h1>
           </Link>
 
           <ul ref={navs} className="lg:flex hidden items-center gap-8">
@@ -59,7 +58,7 @@ const Header = ({ data, setIsDarkMode, darkMode }) => {
                 <Link
                   key={index}
                   to={item.href}
-                  className="text-neutral-500 hover:text-neutral-700 transition-all duration-200"
+                  className="text-neutral-500 hover:text-neutral-700 dark:text-neutral-100 dark:hover:text-neutral-300 transition-all duration-200"
                 >
                   {item.name}
                 </Link>
@@ -71,7 +70,7 @@ const Header = ({ data, setIsDarkMode, darkMode }) => {
         <div className="flex items-center gap-8 ">
           <div
             ref={inpt}
-            className="hidden relative overflow-hidden md:block border border-neutral-100 rounded-md py-2"
+            className="hidden relative overflow-hidden md:block border border-neutral-200 dark:border-neutral-700 rounded-md py-2"
           >
             <img
               src={`http://localhost:1337${data.searchIcon.url}`}
@@ -79,7 +78,7 @@ const Header = ({ data, setIsDarkMode, darkMode }) => {
               alt=""
             />
             <input
-              className="outline-none text-sm pl-9"
+              className="outline-none text-sm pl-9 dark:bg-black"
               type="text"
               placeholder={data.inputPlaceholder}
             />
@@ -129,13 +128,14 @@ const Header = ({ data, setIsDarkMode, darkMode }) => {
           >
             {darkMode ? (
               <img
-                className="w-5"
+                className="w-6"
                 src={`http://localhost:1337${data.LightModeIcon.url}`}
                 alt=""
+                
               />
             ) : (
               <img
-                className="w-5"
+                className="w-6"
                 src={`http://localhost:1337${data.darkModeIcon.url}`}
                 alt=""
               />
@@ -147,6 +147,7 @@ const Header = ({ data, setIsDarkMode, darkMode }) => {
               changeLanguage(e.target.value);
               localStorage.setItem("lang", e.target.value);
             }}
+            className="dark:bg-black dark:text-neutral-100"
           >
             {languages.map((item, index) => {
               return (
