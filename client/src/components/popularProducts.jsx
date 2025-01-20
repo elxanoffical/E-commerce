@@ -58,12 +58,12 @@ const PopularProducts = ({ title, subTitle, textAlign, products }) => {
   return (
     <>
       <ScrollToTop />
-      <section className="flex flex-col mt-[35px]">
+      <section className="flex flex-col pt-[35px] dark:bg-black">
         <div className="flex container flex-col gap-2 mb-10">
-          <p ref={shopNow} className={`text-xs text-${textAlign} text-neutral-400`}>
+          <p ref={shopNow} className={`text-xs text-${textAlign} text-neutral-400 dark:text-neutral-100`}>
             {title}
           </p>
-          <h3 ref={bestShop} className={`text-2xl text-${textAlign} font-bold`}>{subTitle}</h3>
+          <h3 ref={bestShop} className={`text-2xl text-${textAlign} font-bold dark:text-neutral-100`}>{subTitle}</h3>
         </div>
         <div ref={cards} className="container grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-[140px]">
           {products?.slice(0, 4).map((item, index) => (

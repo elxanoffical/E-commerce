@@ -35,9 +35,9 @@ const Features = ({features}) => {
       },[])
 
   return (
-    <section className="">
+    <section className="dark:bg-black">
     <div ref={featureAnimate}
-      className=" container py-8 mt-10 gap-10
+      className=" container py-8 pt-16 gap-10
     grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
     >
       {features?.map((item) => {

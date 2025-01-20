@@ -73,18 +73,18 @@ const HeroBottom = ({data}) => {
   }, []);
 
   return (
-    <div className="h-[304px] border bg-neutral-100 ">
+    <div className="h-[304px]  bg-neutral-100 dark:bg-neutral-900 ">
       <div className="container sm:pt-6 pt-[20px] flex sm:items-center sm:justify-between ">
         <div className="flex flex-col gap-3 items-start py-2">
           <h3
             ref={text}
-            className="text-neutral-800 text-2xl sm:text-3xl font-semibold"
+            className="text-neutral-800 text-2xl sm:text-3xl font-semibold dark:text-neutral-100"
           >
             {data?.title}
           </h3>
           <p
             ref={subText}
-            className="text-neutral-600 text-[12px] sm:text-sm tracking-wide text-start sm:w-[90%]"
+            className="text-neutral-600 text-[12px] sm:text-sm tracking-wide text-start sm:w-[90%] dark:text-neutral-400"
           >
             {data?.subTitle}
           </p>

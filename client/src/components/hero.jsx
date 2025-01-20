@@ -89,7 +89,7 @@ const Hero = ({data}) => {
           </h3>
           <p
             ref={heroSubText}
-            className="text-neutral-600 text-sm tracking-wide text-start w-[80%] sm:w-[90%] dark:text-neutral-100"
+            className="text-neutral-600 text-sm tracking-wide text-start w-[80%] sm:w-[90%] dark:text-neutral-400"
           >
             {data?.subTitle}
           </p>

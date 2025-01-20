@@ -11,8 +11,8 @@ const FeaturesCard = ({ item }) => {
           alt=""
         />
       </div>
-      <h5 className="text-[18px] font-medium">{item.title}</h5>
-      <p className="text-neutral-500 text-sm text-center md:text-start w-[80%]">{item.subTitle}</p>
+      <h5 className="text-[18px] font-medium dark:text-neutral-100">{item.title}</h5>
+      <p className="text-neutral-500 text-sm text-center md:text-start w-[80%] dark:text-neutral-400">{item.subTitle}</p>
     </div>
   );
 };
