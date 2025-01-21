@@ -121,7 +121,7 @@ const ProductDetail = () => {
               onClick={handleClick}
               className="font-medium text-neutral-500 dark:text-neutral-400"
             >
-              Ecommerce
+              Honours
             </button>
             <img src={ChevronRight} alt="" />
             <span className="font-medium text-neutral-900 dark:text-neutral-100">

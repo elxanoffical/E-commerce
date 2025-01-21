@@ -52,7 +52,7 @@ const ListingPage = () => {
               onClick={handleClick}
               className="font-medium text-neutral-500 dark:text-neutral-300"
             >
-              Ecommerce
+              Honours
             </button>
             <img className="text-black" src={ChevronRight} alt="" />
             <span className="font-medium text-neutral-900 dark:text-neutral-50">Categories</span>
