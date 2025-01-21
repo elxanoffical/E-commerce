@@ -74,7 +74,6 @@ const MainLayout = () => {
 
   useEffect(() => {
     setLayoutLoading(true)
-    ;
     setTimeout(() => {
       setLayoutLoading(false);
     }, 2000);

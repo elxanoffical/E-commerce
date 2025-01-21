@@ -13,7 +13,7 @@ const ProductCard = ({ item }) => {
   return (
     <Link
       to={`/products/${item.documentId}`}
-      className="px-2 py-4 flex flex-col gap-4 shadow-lg rounded-lg relative"
+      className="px-2 py-4 flex flex-col gap-4 shadow-lg rounded-lg relative dark:shadow-neutral-700"
     >
       <div className="absolute top-6 right-4 border rounded p-2 flex items-center justify-center">
         {isFavorite ? (

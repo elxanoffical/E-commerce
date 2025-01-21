@@ -8,72 +8,72 @@ const FilterSidebar = () => {
     setPrice(e.target.value);
   };
   return (
-    <div className="flex flex-col border  rounded-lg w-[248px]  py-6 px-[18px] gap-10">
+    <div className="flex flex-col border dark:border-neutral-600  rounded-lg w-[248px]  py-6 px-[18px] gap-10">
       <div className="flex flex-col">
-        <h3 className="text-[14px] font-medium mb-4">Categories</h3>
-        <div className="flex items-center gap-2 py-3 px-1 border-b">
+        <h3 className="text-[14px] font-medium mb-4 dark:text-neutral-100">Categories</h3>
+        <div className="flex items-center gap-2 py-3 px-1 border-b dark:border-b-neutral-600">
           <input className="" type="checkBox" />
-          <p className="text-[14px] tracking-wider font-normal text-neutral-600">
+          <p className="text-[14px] tracking-wider font-normal text-neutral-600 dark:text-neutral-100">
             Perfume
           </p>
         </div>
-        <div className="flex items-center gap-2 py-3 px-1 border-b">
+        <div className="flex items-center gap-2 py-3 px-1 border-b dark:border-b-neutral-600">
           <input className="" type="checkBox" />
-          <p className="text-[14px] tracking-wider font-normal text-neutral-600">
+          <p className="text-[14px] tracking-wider font-normal text-neutral-600 dark:text-neutral-100">
             Trousers
           </p>
         </div>
-        <div className=" flex items-center gap-2 py-3 px-1 border-b">
+        <div className=" flex items-center gap-2 py-3 px-1 border-b dark:border-b-neutral-600">
           <input className=" border outline-none" type="checkBox" />
-          <p className="text-[14px] tracking-wider font-normal text-neutral-600">
+          <p className="text-[14px] tracking-wider font-normal text-neutral-600 dark:text-neutral-100">
             Shoe
           </p>
         </div>
-        <div className="flex items-center gap-2 py-3 px-1 border-b">
+        <div className="flex items-center gap-2 py-3 px-1 border-b dark:border-b-neutral-600">
           <input className=" " type="checkBox" />
-          <p className="text-[14px] tracking-wider font-normal text-neutral-600">
+          <p className="text-[14px] tracking-wider font-normal text-neutral-600 dark:text-neutral-100">
             Handbag
           </p>
         </div>
-        <div className="flex items-center gap-2 py-3 px-1 border-b">
+        <div className="flex items-center gap-2 py-3 px-1 border-b dark:border-b-neutral-600">
           <input className="" type="checkBox" />
-          <p className="text-[14px] tracking-wider font-normal text-neutral-600">
+          <p className="text-[14px] tracking-wider font-normal text-neutral-600 dark:text-neutral-100">
             Hat
           </p>
         </div>
-        <div className="flex items-center gap-2 py-3 px-1 border-b">
+        <div className="flex items-center gap-2 py-3 px-1 border-b dark:border-b-neutral-600">
           <input className=" " type="checkBox" />
-          <p className="text-[14px] tracking-wider font-normal text-neutral-600">
+          <p className="text-[14px] tracking-wider font-normal text-neutral-600 dark:text-neutral-100">
             Thermos
           </p>
         </div>
       </div>
 
       <div className="flex flex-col gap-3 ">
-        <h3 className="text-xs font-medium">Color</h3>
+        <h3 className="text-[14px] font-medium dark:text-neutral-100">Color</h3>
         <div className="flex item-center gap-3">
-          <button className=" focus:border border-black w-7 h-7  rounded-full flex items-center justify-center">
+          <button className="border w-7 h-7 border-neutral-400 dark:border-neutral-300 focus:border-neutral-900 dark:focus:border-neutral-600   rounded-full flex items-center justify-center">
             <span className="w-5 h-5 bg-[#A3BEF8] rounded-full"></span>
           </button>
-          <button className="focus:border border-black w-7 h-7  rounded-full flex items-center justify-center">
+          <button className="border border-neutral-400 dark:border-neutral-300 focus:border-neutral-900 dark:focus:border-neutral-600  w-7 h-7  rounded-full flex items-center justify-center">
             <span className="w-5 h-5 bg-[#FFD58A] rounded-full"></span>
           </button>
-          <button className="focus:border border-black w-7 h-7  rounded-full flex items-center justify-center">
+          <button className="border border-neutral-400 dark:border-neutral-300 focus:border-neutral-900 dark:focus:border-neutral-600  w-7 h-7  rounded-full flex items-center justify-center">
             <span className="w-5 h-5 bg-[#83B18B] rounded-full"></span>
           </button>
-          <button className="focus:border border-black w-7 h-7  rounded-full flex items-center justify-center">
+          <button className="border border-neutral-400 dark:border-neutral-300 focus:border-neutral-900 dark:focus:border-neutral-600  w-7 h-7  rounded-full flex items-center justify-center">
             <span className="w-5 h-5 bg-[#4078FF] rounded-full"></span>
           </button>
         </div>
       </div>
 
       <div className=" flex flex-col gap-3">
-        <h3 className="text-[14px] font-medium">Size</h3>
+        <h3 className="text-[14px] font-medium dark:text-neutral-100">Size</h3>
         <div className="flex items-center gap-2 flex-wrap">
           {["S", "M", "L", "XL", "XXL"].map((size, index) => (
             <button
               key={size}
-              className="border w-10 h-10 text-xs font-medium rounded focus:border-black"
+              className="border w-10 h-10 text-xs font-medium rounded dark:text-neutral-100 dark:focus:border-neutral-600 focus:border-black"
             >
               {size}
             </button>
@@ -82,7 +82,7 @@ const FilterSidebar = () => {
       </div>
 
       <div className="">
-        <h3 className="block text-lg font-medium text-gray-700 mb-4">Price</h3>
+        <h3 className="block text-lg font-medium text-gray-700 mb-4 dark:text-neutral-100">Price</h3>
         <div className="relative">
           <input
             id="price-slider"

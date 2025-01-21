@@ -67,7 +67,7 @@ const ProductList = ({ products }) => {
           to={`/products/${item.documentId}`}
             onClick={() => prdocut(item.id)}
             key={index}
-            className="px-2 py-4 flex flex-col gap-4 shadow-lg  rounded-lg"
+            className="px-2 py-4 flex flex-col gap-4 shadow-lg dark:shadow-neutral-700 rounded-lg"
           >
             <img
               className="bg-neutral-100 rounded h-[100%]"

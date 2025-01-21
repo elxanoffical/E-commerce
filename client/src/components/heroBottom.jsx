@@ -90,7 +90,7 @@ const HeroBottom = ({data}) => {
           </p>
           <button
             ref={btn}
-            className="bg-neutral-900 flex gap-1 items-center text-white px-3 py-[6px] sm:px-5 sm:py-3 rounded
+            className="bg-neutral-900 flex gap-1 items-center dark:border text-white px-3 py-[6px] sm:px-5 sm:py-3 rounded
                mt-8 text-xs group"
           >
             {data?.btnText}

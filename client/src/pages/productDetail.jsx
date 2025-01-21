@@ -114,24 +114,24 @@ const ProductDetail = () => {
   return (
     <>
       <ScrollToTop />
-      <div className="">
-        <div className="h-[28px] flex items-center my-4 mb-2 ">
+      <div className="dark:bg-black">
+        <div className="h-[28px] flex items-center py-4 mb-2 ">
           <div className=" container mx-auto flex gap-1">
             <button
               onClick={handleClick}
-              className="font-medium text-neutral-500"
+              className="font-medium text-neutral-500 dark:text-neutral-400"
             >
               Ecommerce
             </button>
             <img src={ChevronRight} alt="" />
-            <span className="font-medium text-neutral-900">
+            <span className="font-medium text-neutral-900 dark:text-neutral-100">
               {product?.name}
             </span>
           </div>
         </div>
 
         <div className="container flex flex-col md:flex-row gap-[120px] mb-32">
-          <div className="w-[400] sm:w-[534px] bg-neutral-100 flex flex-col gap-10 items-center py-6">
+          <div className="w-[400] sm:w-[534px] bg-neutral-100 dark:bg-neutral-900 flex flex-col gap-10 items-center py-6">
             <img
               className="h-[404px] "
               src={`http://localhost:1337${product?.images[imgCounter].url}`}
@@ -154,36 +154,36 @@ const ProductDetail = () => {
 
           <div className=" flex flex-col w-[440px] py-2">
             <div className="flex items-center justify-between mb-3">
-              <h2 className="text-2xl font-bold">{product?.name}</h2>
+              <h2 className="text-2xl font-bold dark:text-neutral-100">{product?.name}</h2>
               <ShareButton title={product?.name} />
             </div>
 
             <div className="flex items-center gap-2 mb-6">
               <span
-                className="flex items-center gap-2 bg-neutral-100 py-[3px] px-4 rounded-2xl
+                className="flex items-center gap-2 bg-neutral-100 dark:bg-neutral-900 dark:text-neutral-100 py-[3px] px-4 rounded-2xl
               text-xs text-neutral-500 font-medium"
               >
-                <img src={star} alt="" />
+                <img className="" src={star} alt="" />
                 {reviewsStarsAverage} — {product.reviews.length} Reviews
               </span>
-              <span className="border py-[6px] font-medium text-neutral-500 px-4 rounded-2xl text-xs">
+              <span className="border py-[6px] font-medium text-neutral-500 dark:text-neutral-100 px-4 rounded-2xl text-xs">
                 IN STOCK
               </span>
             </div>
 
             <div className="flex gap-4 items-center mb-6">
               {product?.beforePrice && (
-                <p className="text-gray-400 text-[14px] line-through tracking-wider">
+                <p className="text-gray-400 dark:text-neutral-400 text-[14px] line-through tracking-wider">
                   ${product?.beforePrice}
                 </p>
               )}
-              <p className="text-neutral-800 font-medium text-[16px] tracking-wide">
+              <p className="text-neutral-800 dark:text-neutral-100 font-medium text-[16px] tracking-wide">
                 ${product?.price}
               </p>
             </div>
 
             <div className="flex flex-col gap-3 mb-4">
-              <h3 className="text-[13px] text-neutral-500 font-medium tracking-wider">
+              <h3 className="text-[13px] dark:text-neutral-100 text-neutral-500 font-medium tracking-wider">
                 AVAILABLE COLORS
               </h3>
               <div className="flex items-center gap-[10px]">
@@ -198,8 +198,8 @@ const ProductDetail = () => {
                       key={index}
                       className={`border w-7 h-7 ${
                         currentColorIndex == index
-                          ? "border-neutral-900"
-                          : "border-neutral-200"
+                          ? "border-neutral-900 dark:border-neutral-100"
+                          : "border-neutral-200 dark:border-neutral-700"
                       }  rounded-full flex items-center justify-center
                       `}
                     >
@@ -213,7 +213,7 @@ const ProductDetail = () => {
             </div>
 
             <div className="flex flex-col gap-3 mb-8">
-              <h3 className="text-[14px] font-medium text-neutral-500">
+              <h3 className="text-[14px] font-medium dark:text-neutral-100 text-neutral-500">
                 SELECT SIZE
               </h3>
               <div className="flex items-center gap-2">
@@ -226,13 +226,13 @@ const ProductDetail = () => {
                       }
                     }}
                     key={index}
-                    className={`relative border w-10 h-10 text-xs font-medium rounded ${
+                    className={`relative border w-10 h-10 text-xs font-medium rounded dark:text-neutral-100 ${
                       currentSizesIndex == index
                         ? "border-neutral-900"
                         : "border-neutral-200"
                     } ${
                       item.count === 0
-                        ? "bg-neutral-200 cursor-not-allowed"
+                        ? "bg-neutral-200 dark:bg-neutral-800 cursor-not-allowed"
                         : ""
                     }`}
                   >
@@ -243,7 +243,7 @@ const ProductDetail = () => {
             </div>
 
             <div className="flex flex-col gap-3 mb-10">
-              <h3 className="text-[14px] font-medium text-neutral-500 tracking-wide">
+              <h3 className="text-[14px] font-medium text-neutral-500 dark:text-neutral-100 tracking-wide">
                 QUANTITIY
               </h3>
               <div className="flex items-center justify-around py-[10px] border-neutral-100 border rounded max-w-[164px] h-[50px]">
@@ -256,7 +256,7 @@ const ProductDetail = () => {
                     }
                   }}
                 />
-                <span>{orderCount}</span>
+                <span className="dark:text-neutral-100">{orderCount}</span>
                 <img
                   className="p-2 cursor-pointer hover:bg-neutral-100 transition rounded"
                   src={plus}
@@ -276,19 +276,19 @@ const ProductDetail = () => {
             <div className="flex flex-col gap-3">
               <div className="flex items-center gap-4">
                 <button
-                  className="text-[14px] text-white font-medium bg-black py-3 px-[104px] tracking-wide
+                  className="text-[14px] text-white dark:bg-neutral-100 dark:text-neutral-900 font-medium bg-black py-3 px-[104px] tracking-wide
                 rounded"
                 >
                   Add to cart
                 </button>
                 <button
                   onClick={() => toggleIsFavorite(documentId)}
-                  className="border py-[10px] px-[10px] rounded"
+                  className="border dark:border-none py-[10px] dark:bg-neutral-600 px-[10px] rounded"
                 >
                   {isFavorite ? <FaHeart style={{fill: 'red'}}/> : <FaRegHeart />}
                 </button>
               </div>
-              <span className="font-medium text-[13px] text-neutral-500">
+              <span className="font-medium text-[13px] text-neutral-500 dark:text-neutral-100">
                 — FREE SHIPPING ON ORDERS $100+
               </span>
             </div>
@@ -301,11 +301,11 @@ const ProductDetail = () => {
               to=""
               end
               className={({ isActive }) =>
-                `flex gap-3 py-2 px-6 rounded-lg lg:w-60
+                `flex gap-3 py-2 px-6 rounded-lg lg:w-60 dark:text-neutral-100
                ${
                  isActive
-                   ? "bg-neutral-100 font-medium text-neutral-900"
-                   : "bg-white font-medium text-neutral-500"
+                   ? "bg-neutral-100 font-medium text-neutral-900 dark:bg-neutral-600"
+                   : "bg-white font-medium text-neutral-500 dark:bg-neutral-800"
                }`
               }
             >
@@ -315,10 +315,10 @@ const ProductDetail = () => {
             <NavLink
               to="reviews"
               className={({ isActive }) =>
-                `flex gap-3 py-2 px-6 rounded-lg lg:w-60 ${
+                `flex gap-3 py-2 px-6 rounded-lg lg:w-60 dark:text-neutral-100 ${
                   isActive
-                    ? "bg-neutral-100 font-medium text-neutral-900"
-                    : "bg-white font-medium text-neutral-500"
+                    ? "bg-neutral-100 font-medium text-neutral-900 dark:bg-neutral-600"
+                    : "bg-white font-medium text-neutral-500 dark:bg-neutral-800"
                 }`
               }
             >

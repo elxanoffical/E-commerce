@@ -7,7 +7,7 @@ const Details = () => {
     <div className=" flex flex-col gap-14">
       <div className="flex flex-col gap-6">
         <h3 className="font-semibold">Detail</h3>
-        <p className="text-neutral-600 leading-8 text-[14px] font-normal">
+        <p className="text-neutral-600 leading-8 text-[14px] dark:text-neutral-100 font-normal">
           Elevate your everyday style with our Men's Black T-Shirts, the
           ultimate wardrobe essential for modern men.
           <span className="block">
@@ -25,16 +25,16 @@ const Details = () => {
       </div>
 
       <ul className="  ml-4 list-disc flex flex-col gap-2 ">
-        <li className="text-[15px] text-neutral-600 font-normal">
+        <li className="text-[15px] dark:text-neutral-100 text-neutral-600 font-normal">
           Premium Quality
         </li>
-        <li className="text-[15px] text-neutral-600 font-normal">
+        <li className="text-[15px]  dark:text-neutral-100 text-neutral-600 font-normal">
           Versatile Wardrobe Staple
         </li>
-        <li className="text-[15px] text-neutral-600 font-normal">
+        <li className="text-[15px]  dark:text-neutral-100 text-neutral-600 font-normal">
           Available in Various Sizes
         </li>
-        <li className="text-[15px] text-neutral-600 font-normal">
+        <li className="text-[15px]  dark:text-neutral-100 text-neutral-600 font-normal">
           Tailored Fit
         </li>
       </ul>
