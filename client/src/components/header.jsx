@@ -1,13 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import Cart from "./cart";
 import { gsap } from "gsap";
 import { useTranslation } from "react-i18next";
 import { changeLanguage } from "i18next";
+import { useSelector } from "react-redux";
 
 const Header = ({ data, setIsDarkMode, darkMode }) => {
+  const value = useSelector((state) => state.basket.value);
+
   const { i18n, t } = useTranslation();
-  const [isHover, setIsHover] = useState();
 
   const logo = useRef();
   const navs = useRef();
@@ -49,7 +50,9 @@ const Header = ({ data, setIsDarkMode, darkMode }) => {
         <div className="flex items-center justify-between gap-10 xl:gap-24">
           <Link ref={logo} to={"/"} className="flex items-center gap-3">
             <img src={`http://localhost:1337${data.LogoImg.url}`} alt="" />
-            <h1 className="text-xl font-semibold dark:text-neutral-100">{data.logo}</h1>
+            <h1 className="text-xl font-semibold dark:text-neutral-100">
+              {data.logo}
+            </h1>
           </Link>
 
           <ul ref={navs} className="lg:flex hidden items-center gap-8">
@@ -84,27 +87,19 @@ const Header = ({ data, setIsDarkMode, darkMode }) => {
             />
           </div>
 
-          <div
-            className=" relative"
-            onMouseEnter={() => setIsHover(true)}
-            onMouseLeave={() => setIsHover(false)}
-          >
+          <Link to={"/basket"} className=" relative">
             <img
               ref={imgCart}
               className=" cursor-pointer"
               src={`http://localhost:1337${data.basketIcon.url}`}
               alt=""
             />
-            <div
-              className={`absolute top-full right-0 shadow-lg transition-all duration-300 ease-in-out transform ${
-                isHover
-                  ? "opacity-100 "
-                  : "opacity-0 scale-100 pointer-events-none duration-300"
-              }`}
-            >
-              <Cart />
-            </div>
-          </div>
+            {value.length > 0 && (
+              <div className=" absolute top-0 right-0 translate-x-[50%] w-4 h-4 translate-y-[-50%] bg-black rounded-full flex items-center justify-center ">
+                <span className="text-neutral-100 text-xs">{value.length}</span>
+              </div>
+            )}
+          </Link>
 
           <Link to="/login">
             <img
@@ -131,7 +126,6 @@ const Header = ({ data, setIsDarkMode, darkMode }) => {
                 className="w-6"
                 src={`http://localhost:1337${data.LightModeIcon.url}`}
                 alt=""
-                
               />
             ) : (
               <img

@@ -1,18 +1,9 @@
 import React, { useEffect, useState } from "react";
 import ChevronRight from "../assets/icons/global/Chevron Right.svg";
-import {
-  Link,
-  NavLink,
-  Outlet,
-  ServerRouter,
-  useNavigate,
-  useParams,
-} from "react-router-dom";
-import share from "../assets/icons/global/Share.svg";
+import { NavLink, Outlet, useNavigate, useParams } from "react-router-dom";
 import star from "../assets/icons/global/star.svg";
 import minus from "../assets/icons/global/Minus.svg";
 import plus from "../assets/icons/global/Add.svg";
-import heart from "../assets/icons/global/Heart.svg";
 import more from "../assets/icons/global/More.svg";
 import emptyStar from "../assets/icons/global/Empty Star.svg";
 import ScrollToTop from "../hooks/useScrollToTop";
@@ -24,11 +15,18 @@ import { useTranslation } from "react-i18next";
 import ShareButton from "../components/shareButton";
 import { FaHeart } from "react-icons/fa";
 import { FaRegHeart } from "react-icons/fa";
-import i18next from "i18next";
+
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { addNewItemToBasket } from "../store/basket";
 
 const ProductDetail = () => {
+  const value = useSelector((state) => state.basket.value);
+  const dispatch = useDispatch();
+
   const { documentId } = useParams();
-  const initialFavorite = JSON.parse(localStorage.getItem("favorites").includes(documentId)
+  const initialFavorite = JSON.parse(
+    localStorage.getItem("favorites").includes(documentId)
   );
   const [imgCounter, setImgCounter] = useState(0);
   const [currentColorIndex, setCurrentColorIndex] = useState(0);
@@ -37,7 +35,6 @@ const ProductDetail = () => {
   const [isFavorite, setIsFavorite] = useState(initialFavorite);
 
   const { i18n } = useTranslation();
-
 
   const navigate = useNavigate();
   const handleClick = () => {
@@ -49,7 +46,7 @@ const ProductDetail = () => {
     const favoritesArr = JSON.parse(favoriteString);
     let newFavoritesArr;
     if (favoritesArr.includes(documentId)) {
-      newFavoritesArr = favoritesArr.filter((item) => item != documentId)
+      newFavoritesArr = favoritesArr.filter((item) => item != documentId);
       setIsFavorite(false);
     } else {
       setIsFavorite(true);
@@ -94,7 +91,6 @@ const ProductDetail = () => {
     id: documentId,
   });
 
-
   if (loading) {
     return <Loading />;
   }
@@ -104,12 +100,30 @@ const ProductDetail = () => {
 
   const { product, products } = data;
 
-
   let sumOfStar = product.reviews.reduce((acc, review) => {
     return acc + review.stars;
   }, 0);
 
   let reviewsStarsAverage = (sumOfStar / product.reviews.length).toFixed(2);
+
+  const adToCardHandle = (product ) => {
+    if (orderCount > 0) {
+      dispatch(
+        addNewItemToBasket({
+          id: documentId,
+          name: product.name,
+          color: product.info[currentColorIndex].color,
+          sizes: product.info[currentColorIndex].sizes[currentSizesIndex].name,
+          count: orderCount,
+          price: product.price,
+          imgUrl: product.images[0].url
+        })
+      );
+      alert("product added to the basket card");
+    } else {
+      alert("please enter product count");
+    }
+  };
 
   return (
     <>
@@ -154,7 +168,9 @@ const ProductDetail = () => {
 
           <div className=" flex flex-col w-[440px] py-2">
             <div className="flex items-center justify-between mb-3">
-              <h2 className="text-2xl font-bold dark:text-neutral-100">{product?.name}</h2>
+              <h2 className="text-2xl font-bold dark:text-neutral-100">
+                {product?.name}
+              </h2>
               <ShareButton title={product?.name} />
             </div>
 
@@ -276,6 +292,7 @@ const ProductDetail = () => {
             <div className="flex flex-col gap-3">
               <div className="flex items-center gap-4">
                 <button
+                  onClick={() => adToCardHandle(product)}
                   className="text-[14px] text-white dark:bg-neutral-100 dark:text-neutral-900 font-medium bg-black py-3 px-[104px] tracking-wide
                 rounded"
                 >
@@ -285,7 +302,11 @@ const ProductDetail = () => {
                   onClick={() => toggleIsFavorite(documentId)}
                   className="border dark:border-none py-[10px] dark:bg-neutral-600 px-[10px] rounded"
                 >
-                  {isFavorite ? <FaHeart style={{fill: 'red'}}/> : <FaRegHeart />}
+                  {isFavorite ? (
+                    <FaHeart style={{ fill: "red" }} />
+                  ) : (
+                    <FaRegHeart />
+                  )}
                 </button>
               </div>
               <span className="font-medium text-[13px] text-neutral-500 dark:text-neutral-100">

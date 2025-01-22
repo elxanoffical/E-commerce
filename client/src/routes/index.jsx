@@ -8,6 +8,7 @@ import Login from "../pages/login";
 import SignUp from "../pages/signUp";
 import ProductDetail from "../pages/productDetail";
 import About from "../pages/about";
+import MyBasket from "../pages/basket";
 
 export const routes = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ export const routes = createBrowserRouter([
       {
         path: "/categories",
         element: <ListingPage />,
+      },
+      {
+        path: "/basket",
+        element: <MyBasket />,
       },
       {
         path: '/login',
