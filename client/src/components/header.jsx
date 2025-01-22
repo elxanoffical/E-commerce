@@ -95,8 +95,8 @@ const Header = ({ data, setIsDarkMode, darkMode }) => {
               alt=""
             />
             {value.length > 0 && (
-              <div className=" absolute top-0 right-0 translate-x-[50%] w-4 h-4 translate-y-[-50%] bg-black rounded-full flex items-center justify-center ">
-                <span className="text-neutral-100 text-xs">{value.length}</span>
+              <div className=" absolute top-0 right-0 translate-x-[50%] w-4 h-4 translate-y-[-50%] bg-black dark:bg-white rounded-full flex items-center justify-center ">
+                <span className="text-neutral-100 text-xs dark:text-neutral-900">{value.length}</span>
               </div>
             )}
           </Link>
