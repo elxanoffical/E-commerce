@@ -3,22 +3,28 @@ import { useSelector } from "react-redux";
 
 const MyBasket = () => {
   const value = useSelector((state) => state.basket.value);
+  const TotalPice = value.reduce((acc, item) => {
+    return acc + item.price * item.count
+  },0);
+  const finalPrice = TotalPice + 3
+ 
 
   return (
     <div>
       <div className="container flex ">
-        <div className="border w-full border-black p-6">
-          <h1 className="text-xl font-semibold border-b border-b-neutral-300">
+        <div className=" w-full pr-24">
+          <h1 className="text-xl font-semibold">
             Your cart
           </h1>
+          <div className="border-b border-b-neutral-300 my-4"></div>
           {value.map((item) => {
             return (
-              <div className=" flex gap-10 items-start py-2">
+              <div className="">
                 <div className="flex items-start justify-between w-full  ">
-                  <div className="flex">
-                    <div>
+                  <div className="flex mb-4 gap-10">
+                    <div className="flex items-center justify-center">
                       <img
-                        className="w-[100px] h-[100px] object-contain"
+                        className="w-[100px] h-[100px] object-contain border"
                         src={`http://localhost:1337${item.imgUrl}`}
                         alt=""
                       />
@@ -58,7 +64,7 @@ const MyBasket = () => {
           <h1 className="text-[18px] font-semibold mb-6">Order Summary</h1>
           <div className="flex flex-col gap-3">
             <h1 className="flex items-center justify-between text-neutral-600 font-medium">
-              Subtotal: <span>$90</span>
+              Subtotal: <span>{TotalPice}</span>
             </h1>
             <h1 className="flex items-center justify-between text-neutral-600 font-medium">
               Shipping: <span>Free</span>
@@ -70,7 +76,7 @@ const MyBasket = () => {
           <div className="border-b border-b-neutral-300 my-6"></div>
           <div className="mb-8">
             <h1 className="flex items-center justify-between text-[16px] text-neutral-900 font-medium">
-              Total <span>$100</span>
+              Total <span>{finalPrice}</span>
             </h1>
           </div>
           <div className="flex flex-col items-center gap-8">
