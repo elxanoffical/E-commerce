@@ -11,18 +11,18 @@ const MyBasket = () => {
 
   return (
     <div className="dark:bg-black py-4">
-      <div className="container flex ">
-        <div className=" w-full pr-24">
+      <div className="container flex flex-col lg:flex-row ">
+        <div className=" w-full flex flex-col pr-24">
           <h1 className="text-xl font-semibold dark:text-neutral-100">
             Your cart
           </h1>
           <div className="border-b border-b-neutral-300 my-4 dark:border-b-neutral-500"></div>
           {value.map((item) => {
             return (
-              <div className="">
-                <div className="flex items-start justify-between w-full  ">
-                  <div className="flex mb-4 gap-10">
-                    <div className="flex items-center justify-center">
+              <div className=" ">
+                <div className="flex border rounded mb-3 flex-col md:flex-row items-start justify-between w-[105%] md:w-full  ">
+                  <div className="flex mb-4  gap-6 md:gap-6">
+                    <div className="flex">
                       <img
                         className="w-[100px] h-[100px] object-contain border dark:bg-white rounded"
                         src={`http://localhost:1337${item.imgUrl}`}
@@ -30,29 +30,29 @@ const MyBasket = () => {
                       />
                     </div>
                     <div className="flex flex-col gap-1">
-                      <h1 className="text-xl font-medium text-neutral-700 dark:text-neutral-300">
+                      <h1 className=" text-[16px] sm:text-xl font-medium text-neutral-700 dark:text-neutral-300">
                         {item.name}
                       </h1>
                       <div className="flex items-center gap-3 dark:text-neutral-100">
-                        <h1 className="flex items-center gap-2 text-lg font-medium text-neutral-700 dark:text-neutral-300">
+                        <h1 className="flex items-center gap-2 text-[16px] sm:text-xl font-medium text-neutral-700 dark:text-neutral-300">
                           color:
                           <span
                             className={`bg-[#${item.color}] w-4 h-4 inline-block rounded-full`}
                           ></span>
                         </h1>
                         -
-                        <h1 className="flex items-center gap-2 text-lg font-medium text-neutral-700 dark:text-neutral-300">
+                        <h1 className="flex items-center gap-2 text-[16px] sm:text-xl font-medium text-neutral-700 dark:text-neutral-300">
                           Size: <span>{item.sizes}</span>
                         </h1>
                       </div>
-                      <h1 className="flex items-center gap-2 text-lg font-medium text-neutral-700 dark:text-neutral-300">
+                      <h1 className="flex items-center gap-2 text-[16px] sm:text-xl font-medium text-neutral-700 dark:text-neutral-300">
                         Count: <span>{item.count}</span>
                       </h1>
                     </div>
                   </div>
-                  <div className="px-4">
-                    <span className="text-lg font-medium text-neutral-700 border-b border-b-neutral-400 dark:text-neutral-300">
-                      ${item.price}
+                  <div className="md:px-4">
+                    <span className="text-[16px] sm:text-xl font-medium text-neutral-700 border-b border-b-neutral-400 dark:text-neutral-300">
+                      Price: ${item.price}
                     </span>
                   </div>
                 </div>
