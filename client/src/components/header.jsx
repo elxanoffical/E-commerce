@@ -76,7 +76,7 @@ const Header = ({ data, setIsDarkMode, darkMode }) => {
             className="hidden relative overflow-hidden md:block border border-neutral-200 dark:border-neutral-700 rounded-md py-2"
           >
             <img
-              src={`http://localhost:1337${data.searchIcon.url}`}
+              src={`http://localhost:1337${data?.searchIcon.url}`}
               className=" cursor-pointer absolute top=[50%] left-2 w-6 h-6"
               alt=""
             />

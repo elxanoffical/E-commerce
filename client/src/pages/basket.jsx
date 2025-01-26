@@ -16,11 +16,11 @@ const MyBasket = () => {
           <h1 className="text-xl font-semibold dark:text-neutral-100">
             Your cart
           </h1>
-          <div className="border-b border-b-neutral-300 my-4 dark:border-b-neutral-500"></div>
+          <div className="border-b border-b-neutral- my-4 dark:border-b-neutral-500"></div>
           {value.map((item) => {
             return (
               <div className=" ">
-                <div className="flex border rounded mb-3 flex-col md:flex-row items-start justify-between w-[105%] md:w-full  ">
+                <div className="flex border border-neutral-600a rounded mb-3 flex-col md:flex-row items-start justify-between w-[105%] md:w-full  ">
                   <div className="flex mb-4  gap-6 md:gap-6">
                     <div className="flex">
                       <img
@@ -64,7 +64,7 @@ const MyBasket = () => {
           <h1 className="text-[18px] font-semibold mb-6 dark:text-neutral-300">Order Summary</h1>
           <div className="flex flex-col gap-3">
             <h1 className="flex items-center justify-between dark:text-neutral-300 text-neutral-600 font-medium">
-              Subtotal: <span>{TotalPice}</span>
+              Subtotal: <span>${TotalPice}</span>
             </h1>
             <h1 className="flex items-center justify-between dark:text-neutral-300 text-neutral-600 font-medium">
               Shipping: <span>Free</span>
@@ -76,7 +76,7 @@ const MyBasket = () => {
           <div className="border-b border-b-neutral-300 my-6 dark:border-b-neutral-500"></div>
           <div className="mb-8">
             <h1 className="flex items-center justify-between dark:text-neutral-300 text-[16px] text-neutral-900 font-medium">
-              Total <span>{finalPrice}</span>
+              Total <span>${finalPrice}</span>
             </h1>
           </div>
           <div className="flex flex-col items-center gap-8">

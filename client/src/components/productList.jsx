@@ -61,7 +61,7 @@ const ProductList = ({ products }) => {
         </button>
         <button ref={latest} className="text-neutral-500 dark:text-neutral-100">Latest</button>
       </div>
-      <div ref={cards} className="container grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-[168px]">
+      <div ref={cards} className="container grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-[168px]">
         {products.slice(0,4).map((item, index) => (
           <Link 
           to={`/products/${item.documentId}`}
