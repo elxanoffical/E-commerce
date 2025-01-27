@@ -57,38 +57,103 @@ const Dashbord = () => {
         </div>
       </div>
 
-      <div className="border flex flex-col gap-8 w-[30%] bg-white p-6">
-        <div className="flex flex-col">
-          <h1 className="text-[15px] font-semibold">Best Selling</h1>
-          <p className="text-[10px] tracking-wide font-medium text-neutral-500">
-            THIS MONTH
-          </p>
-        </div>
-        <div className="border-b"></div>
-        <div className="flex flex-col gap-6">
-          <div className="flex gap-2">
-            <p className="text-xl font-bold">$2,400</p> -
-            <span className="text-[16px] text-neutral-500 font-medium">
-              Total Sales
-            </span>
+      <div className="flex gap-9">
+        <div className=" flex flex-col gap-8 w-[30%] bg-white p-6">
+          <div className="flex flex-col">
+            <h1 className="text-[15px] font-semibold">Best Selling</h1>
+            <p className="text-[10px] tracking-wide font-medium text-neutral-500">
+              THIS MONTH
+            </p>
           </div>
-          <div className="flex flex-col gap-3">
-            <h1 className="border text-[14px] px-2 flex font-medium text-neutral-500 rounded-full">
-              Classic Monochrome Tees -
-              <span className="text-neutral-900 text-[14px]">$940 Sales</span>
-            </h1>
-            <h1 className="border text-[14px] px-2 flex font-medium text-neutral-500 rounded-full">
-            Monochromatic Wardrobe -
-              <span className="text-neutral-900 text-[14px]">$790 Sales</span>
-            </h1>
-            <h1 className="border text-[14px] px-2 flex font-medium text-neutral-500 rounded-full">
-            Essential Neutrals -
-              <span className="text-neutral-900 text-[14px]">$740 Sales</span>
-            </h1>
+          <div className="border-b"></div>
+          <div className="flex flex-col gap-6">
+            <div className="flex gap-2">
+              <p className="text-xl font-bold">$2,400</p> -
+              <span className="text-[16px] text-neutral-500 font-medium">
+                Total Sales
+              </span>
+            </div>
+            <div className="flex flex-col gap-[10px]">
+              <h1 className="border text-[14px] px-2 flex font-medium text-neutral-500 rounded-full">
+                Classic Monochrome Tees -
+                <span className="text-neutral-900 text-[14px]">$940 Sales</span>
+              </h1>
+              <h1 className="border text-[14px] px-2 flex font-medium text-neutral-500 rounded-full">
+                Monochromatic Wardrobe -
+                <span className="text-neutral-900 text-[14px]">$790 Sales</span>
+              </h1>
+              <h1 className="border text-[14px] px-2 flex font-medium text-neutral-500 rounded-full">
+                Essential Neutrals -
+                <span className="text-neutral-900 text-[14px]">$740 Sales</span>
+              </h1>
+            </div>
+          </div>
+          <div>
+            <img src={chartdiv} alt="" />
           </div>
         </div>
-        <div>
-          <img src={chartdiv} alt="" />
+
+        <div class="  w-[712px] bg-white">
+          <div class="overflow-x-auto ">
+            <div className="py-6 px-6 flex items-center gap-5">
+              <h1 className="text-[16px] font-semibold text-neutral-900">
+                Recent Orders
+              </h1>
+              <button className="px-4 py-[2px] bg-neutral-100 text-neutral-500 rounded-full text-[14px]">
+                View All
+              </button>
+            </div>
+            <table class="table-auto w-full bg-white">
+              <thead>
+                <tr class=" text-gray-600 text-sm leading-normal border-b border-t">
+                  <th class="py-[20px] px-6 text-left ">Item</th>
+                  <th class="py-[20px] px-6 text-left ">Date</th>
+                  <th class="py-[20px] px-6 text-left ">Total</th>
+                  <th class="py-[20px] px-6 text-left ">Status</th>
+                </tr>
+              </thead>
+              <tbody class="text-gray-600 text-sm font-medium">
+                <tr class="border-b border-gray-300 hover:bg-gray-100">
+                  <td class="py-[20px] px-6 text-left ">
+                    Mens Black T-Shirts
+                  </td>
+                  <td class="py-[20px] px-6 ">20 Mar, 2023</td>
+                  <td class="py-[20px] px-6 text-left ">$75.00</td>
+                  <td className="py-[20px] px-6 text-left ">Processing</td>
+                </tr>
+                <tr class="border-b border-gray-300 hover:bg-gray-100">
+                  <td class="py-[20px] px-6 text-left ">
+                    Essential Neutrals{" "}
+                  </td>
+                  <td class="py-[20px] px-6 ">19 Mar, 2023</td>
+                  <td class="py-[20px] px-6 text-left ">$22.00</td>
+                  <td className="py-[20px] px-6 text-left ">Processing</td>
+                </tr>
+                <tr class="border-b border-gray-300 hover:bg-gray-100">
+                  <td class="py-[20px] px-6 text-left ">
+                    Sleek and Cozy Black{" "}
+                  </td>
+                  <td class="py-[20px] px-6 ">7 Feb, 2023</td>
+                  <td class="py-[20px] px-6 text-left ">$57.00</td>
+                  <td className="py-[20px] px-6 text-left ">Completed</td>
+                </tr>
+                <tr class="border-b border-gray-300 hover:bg-gray-100">
+                  <td class="py-[20px] px-6 text-left ">MOCKUP Black</td>
+                  <td class="py-[20px] px-6 ">29 Jan, 2023</td>
+                  <td class="py-[20px] px-6 text-left ">$30.00</td>
+                  <td className="py-[20px] px-6 text-left ">Completed</td>
+                </tr>
+                <tr class=" hover:bg-gray-100">
+                  <td class="py-[20px] px-6 text-left ">
+                    Monochromatic Wardrobe{" "}
+                  </td>
+                  <td class="py-[20px] px-6 ">27 Jan, 2023</td>
+                  <td class="py-[20px] px-6 text-left ">$27.00</td>
+                  <td className="py-[20px] px-6 text-left ">Completed</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
