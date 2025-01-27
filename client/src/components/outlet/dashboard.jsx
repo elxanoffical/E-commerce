@@ -58,7 +58,7 @@ const Dashbord = () => {
       </div>
 
       <div className="flex gap-9">
-        <div className=" flex flex-col gap-8 w-[30%] bg-white p-6">
+        <div className=" flex flex-col gap-8 w-[30%] rounded bg-white p-6">
           <div className="flex flex-col">
             <h1 className="text-[15px] font-semibold">Best Selling</h1>
             <p className="text-[10px] tracking-wide font-medium text-neutral-500">
@@ -74,18 +74,21 @@ const Dashbord = () => {
               </span>
             </div>
             <div className="flex flex-col gap-[10px]">
-              <h1 className="border text-[14px] px-2 flex font-medium text-neutral-500 rounded-full">
-                Classic Monochrome Tees -
-                <span className="text-neutral-900 text-[14px]">$940 Sales</span>
-              </h1>
-              <h1 className="border text-[14px] px-2 flex font-medium text-neutral-500 rounded-full">
-                Monochromatic Wardrobe -
-                <span className="text-neutral-900 text-[14px]">$790 Sales</span>
-              </h1>
-              <h1 className="border text-[14px] px-2 flex font-medium text-neutral-500 rounded-full">
-                Essential Neutrals -
-                <span className="text-neutral-900 text-[14px]">$740 Sales</span>
-              </h1>
+              <div className="border rounded-full flex items-center gap-1 px-2">
+                <h1 className="text-[12px] font-medium text-neutral-500">Classic Monochrome Tees </h1>
+                -
+                <span className="text-neutral-900 font-semibold text-[10px]">$940 Sales</span>
+              </div>
+              <div className="border rounded-full flex items-center gap-1 px-2">
+                <h1 className="text-[12px] font-medium text-neutral-500">Monochromatic Wardrobe </h1>
+                -
+                <span className="text-neutral-900 font-semibold text-[10px]">$790 Sales</span>
+              </div>
+              <div className="border rounded-full flex items-center gap-1 px-2">
+                <h1 className="text-[12px] font-medium text-neutral-500">Essential Neutrals </h1>
+                -
+                <span className="text-neutral-900 font-semibold text-[10px]">$740 Sales</span>
+              </div>
             </div>
           </div>
           <div>
@@ -93,7 +96,7 @@ const Dashbord = () => {
           </div>
         </div>
 
-        <div class="  w-[712px] bg-white">
+        <div class="  w-[618px] rounded bg-white">
           <div class="overflow-x-auto ">
             <div className="py-6 px-6 flex items-center gap-5">
               <h1 className="text-[16px] font-semibold text-neutral-900">
