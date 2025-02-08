@@ -12,7 +12,7 @@ import logo from "../assets/images/footerLogo.svg";
 const AdminPage = () => {
   return (
     <section className="flex container my-10">
-      <div className="flex flex-col  w-[260px] py-4">
+      <div className="flex flex-col border border-black  w-[260px] py-4">
         <div className="flex items-center gap-3 mb-14">
           <img className="" src={logo} alt="" />
           <h1 className="text-[20px]">Admin</h1>
