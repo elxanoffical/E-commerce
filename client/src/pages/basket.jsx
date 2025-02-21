@@ -1,13 +1,15 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import az from "../locales/az.json";
+import en from "../locales/en.json";
 
 const MyBasket = () => {
   const value = useSelector((state) => state.basket.value);
+
   const TotalPice = value.reduce((acc, item) => {
-    return acc + item.price * item.count
-  },0);
-  const finalPrice = TotalPice + 3
- 
+    return acc + item.price * item.count;
+  }, 0);
+  const finalPrice = TotalPice + 3;
 
   return (
     <div className="dark:bg-black py-4">
@@ -61,7 +63,9 @@ const MyBasket = () => {
           })}
         </div>
         <div className="border rounded flex flex-col dark:border-neutral-600 border-neutral-300 px-8 w-[340px] py-6">
-          <h1 className="text-[18px] font-semibold mb-6 dark:text-neutral-300">Order Summary</h1>
+          <h1 className="text-[18px] font-semibold mb-6 dark:text-neutral-300">
+            Order Summary
+          </h1>
           <div className="flex flex-col gap-3">
             <h1 className="flex items-center justify-between dark:text-neutral-300 text-neutral-600 font-medium">
               Subtotal: <span>${TotalPice}</span>

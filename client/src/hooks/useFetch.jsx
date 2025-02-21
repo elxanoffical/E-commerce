@@ -35,7 +35,7 @@ export const getData = (query, variables = {}) => {
 
   useEffect(() => {
     setLoading(true)
-    setTimeout(demo,2000);
+    setTimeout(demo,1500);
   }, [i18n.language]);
 
   return { data, error, loading };
