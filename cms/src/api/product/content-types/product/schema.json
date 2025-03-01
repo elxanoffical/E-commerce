@@ -91,12 +91,6 @@
         }
       }
     },
-    "reviews": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::review.review",
-      "mappedBy": "product"
-    },
     "detail": {
       "type": "richtext",
       "pluginOptions": {
@@ -104,6 +98,12 @@
           "localized": true
         }
       }
+    },
+    "reviews": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::review.review",
+      "mappedBy": "product"
     }
   }
 }

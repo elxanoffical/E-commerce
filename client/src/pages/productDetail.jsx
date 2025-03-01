@@ -25,9 +25,11 @@ const ProductDetail = () => {
   const dispatch = useDispatch();
 
   const { documentId } = useParams();
+
   const initialFavorite = JSON.parse(
     localStorage.getItem("favorites").includes(documentId)
   );
+
   const [imgCounter, setImgCounter] = useState(0);
   const [currentColorIndex, setCurrentColorIndex] = useState(0);
   const [currentSizesIndex, setCurrentSizesIndex] = useState(0);
@@ -106,7 +108,7 @@ const ProductDetail = () => {
 
   let reviewsStarsAverage = (sumOfStar / product.reviews.length).toFixed(2);
 
-  const adToCardHandle = (product ) => {
+  const adToCardHandle = (product) => {
     if (orderCount > 0) {
       dispatch(
         addNewItemToBasket({
@@ -116,7 +118,7 @@ const ProductDetail = () => {
           sizes: product.info[currentColorIndex].sizes[currentSizesIndex].name,
           count: orderCount,
           price: product.price,
-          imgUrl: product.images[0].url
+          imgUrl: product.images[0].url,
         })
       );
       alert("product added to the basket card");
@@ -279,8 +281,7 @@ const ProductDetail = () => {
                   onClick={() => {
                     if (
                       orderCount + 1 <=
-                      product.info[currentColorIndex].sizes[currentSizesIndex]
-                        .count
+                      product.info[currentColorIndex].sizes[currentSizesIndex].count
                     ) {
                       setOrderCount(orderCount + 1);
                     }
