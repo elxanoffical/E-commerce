@@ -16,6 +16,7 @@ import Orders from "../components/outlet/orders";
 import Customers from "../components/outlet/customers";
 import Settings from "../components/outlet/settings";
 import ReviewsAdmin from "../components/outlet/reviews";
+import ContactPage from "../pages/contact";
 
 export const routes = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ export const routes = createBrowserRouter([
       {
         path: "/categories",
         element: <ListingPage />,
+      },
+      {
+        path: "/contact",
+        element: <ContactPage />,
       },
       {
         path: "/basket",
